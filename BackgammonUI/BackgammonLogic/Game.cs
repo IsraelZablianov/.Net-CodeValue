@@ -14,7 +14,7 @@ namespace BackgammonLogic
         public Game()
         {
             _computerAI = new ComputerAI(_gameLogic);
-            //InitializeGame();
+            InitializeGame();
         }
 
         public Cell[,] Board
