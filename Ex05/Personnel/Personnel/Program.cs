@@ -11,9 +11,8 @@ namespace Personnel
     {
         static void Main(string[] args)
         {
-            Program P = new Program();
-            //Reading from command line
-            List<string> listOfDataFromFile = P.ReadFileToListOfStrings(args[0]);
+            var P = new HelperClass();
+            List<string> listOfDataFromFile = P.ReadFileToListOfStrings(@"C:\Users\israel\Documents\Visual Studio 2015\Projects\DotNetCourse\Ex05\Personnel\Personnel\Resources\The Notepade File.txt");
             if (listOfDataFromFile != null)
             {
                 foreach (var line in listOfDataFromFile)
@@ -27,25 +26,6 @@ namespace Personnel
             }
 
             Console.ReadKey();
-        }
-
-        private List<string> ReadFileToListOfStrings(string name)
-        {
-            List<string> fileData = null;
-            if(File.Exists(name))
-            {
-                fileData = new List<string>();
-                FileStream fileStream = new FileStream(name, FileMode.Open, FileAccess.Read, FileShare.Read);
-                StreamReader streamReader = new StreamReader(fileStream);
-                while(streamReader.EndOfStream == false)
-                {
-                    fileData.Add(streamReader.ReadLine());
-                }
-                fileStream.Close();
-                streamReader.Close();
-            }
-
-            return fileData;
         }
     }
 }
