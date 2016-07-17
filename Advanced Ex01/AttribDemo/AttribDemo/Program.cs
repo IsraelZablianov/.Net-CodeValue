@@ -21,7 +21,7 @@ namespace AttribDemo
             {
                 Console.WriteLine(e.Message);
             }
-            catch (MissingExpectedAttribute e)
+            catch (MissingExpectedAttributeException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -34,7 +34,7 @@ namespace AttribDemo
             {
                 Console.WriteLine("Do not forget null!!");
             }
-            catch (MissingExpectedAttribute e)
+            catch (MissingExpectedAttributeException e)
             {
                 Console.WriteLine(e.Message);
             }

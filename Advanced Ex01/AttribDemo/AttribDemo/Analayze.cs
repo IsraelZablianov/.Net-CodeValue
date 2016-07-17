@@ -36,7 +36,7 @@ namespace AttribDemo
 
             if(!hasAtLeastOneCodeReviewAttribute)
             {
-                throw new MissingExpectedAttribute();
+                throw new MissingExpectedAttributeException();
             }
 
             return allReviewd;

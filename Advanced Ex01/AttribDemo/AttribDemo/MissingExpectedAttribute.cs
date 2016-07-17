@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AttribDemo
 {
-    public class MissingExpectedAttribute : Exception
+    public class MissingExpectedAttributeException : Exception
     {
-        public MissingExpectedAttribute()
+        public MissingExpectedAttributeException()
             : base("Missing expected attribute")
         { }
     }
