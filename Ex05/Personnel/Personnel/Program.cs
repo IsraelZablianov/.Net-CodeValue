@@ -12,7 +12,7 @@ namespace Personnel
         static void Main(string[] args)
         {
             var P = new HelperClass();
-            List<string> listOfDataFromFile = P.ReadFileToListOfStrings(@"C:\Users\israel\Documents\Visual Studio 2015\Projects\DotNetCourse\Ex05\Personnel\Personnel\Resources\The Notepade File.txt");
+            List<string> listOfDataFromFile = P.ReadFileToListOfStrings(@"Resources\The Notepade File.txt");
             if (listOfDataFromFile != null)
             {
                 foreach (var line in listOfDataFromFile)
