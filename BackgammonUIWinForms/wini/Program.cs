@@ -11,6 +11,6 @@ namespace Backgammon
         static void Main(string[] args)
         {
             new BackgammonUI().MainMenu();
-        }
+        } 
     }
 }
