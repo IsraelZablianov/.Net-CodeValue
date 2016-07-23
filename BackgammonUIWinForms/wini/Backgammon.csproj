@@ -62,7 +62,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Win.cs">
+    <Compile Include="BackgammonUI.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -77,8 +77,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Win.resx">
-      <DependentUpon>Win.cs</DependentUpon>
+    <EmbeddedResource Include="BackgammonUI.resx">
+      <DependentUpon>BackgammonUI.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

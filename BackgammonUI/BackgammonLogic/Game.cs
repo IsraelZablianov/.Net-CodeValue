@@ -43,10 +43,19 @@ namespace BackgammonLogic
 
         public void InitializeGame()
         {
+            for (int i = 0; i < Board.GetLength(0); i++)
+            {
+                for (int j = 0; j < Board.GetLength(1); j++)
+                {
+                    Board[i, j] = Cell.Empty;
+                }
+            }
+
             Board[14, 0] = Cell.O;
             Board[13, 0] = Cell.O;
             Board[13, 23] = Cell.X;
             Board[14, 23] = Cell.X;
+
             for (int i = 0; i < 3; i++)
             {
                 Board[12 + i, 7] = Cell.X;

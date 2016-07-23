@@ -20,7 +20,7 @@ namespace Backgammon
         private PictureBox _secondDie;
         private Label _checker1 = new Label();
         private Player _player1 = new Player(Cell.X);
-        private Player _player2;
+        private Player _player2 = new Player(Cell.O);
         private TextBox _scoreTextBox;
         private bool _endOfFirstPlayerTurn;
         private bool _endOfSecondPlayerTurn;
@@ -55,6 +55,7 @@ namespace Backgammon
         private bool _isRooledAllreadySecondPlayer;
         private PictureBox _compDie2;
         private TextBox _exceptionInfo;
+        private DialogResult _rematch = DialogResult.No;
         private Image[] _images = new Image[6];
         private MainMenuForm _mainMenuForm = new MainMenuForm();
 
@@ -87,23 +88,25 @@ namespace Backgammon
         public void MainMenu()
         {
             _mainMenuForm.ShowDialog();
-            if(_mainMenuForm.IsOkButtonPressed)
+            do
             {
-                _player1.Name = _mainMenuForm.FirstPlayerName;
-                if(_mainMenuForm.OnePlayer)
+                if (_mainMenuForm.IsOkButtonPressed)
                 {
-                    _player2 = _game.Computer;
-                    SinglePlayer();
-                }
-                else
-                {
-                    _player2 = new Player(Cell.O);
-                    _player2.Name = _mainMenuForm.SecondPlayerName;
-                    TwoPlayers();
-                }
+                    _player1.Name = _mainMenuForm.FirstPlayerName;
+                    if (_mainMenuForm.OnePlayer)
+                    {
+                        _player2 = _game.Computer;
+                        SinglePlayer();
+                    }
+                    else
+                    {
+                        _player2.Name = _mainMenuForm.SecondPlayerName;
+                        TwoPlayers();
+                    }
 
-                ShowDialog();
-            }
+                    ShowDialog();
+                }
+            } while (_rematch == DialogResult.Yes);
         }
 
         private void SinglePlayer()
@@ -143,27 +146,32 @@ namespace Backgammon
             {
                 _game.InitializeGame();
                 PrintAllBoard();
-                _endOfFirstPlayerTurn = false;
-                _endOfSecondPlayerTurn = false;
-                _endOfGame = true;
-                MessageBox.Show($"{player.Name} won!!", "Win!!!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 PrintScoring();
-                Close();
-
+                _rematch = MessageBox.Show(
+$"{player.Name} won!! {Environment.NewLine} Do you want a rematch?", "Win!!!",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if(_rematch == DialogResult.No)
+                {
+                    Close();
+                }
+                else
+                {
+                    _endOfSecondPlayerTurn = false;
+                    _endOfFirstPlayerTurn = false;
+                    _isRooledAllreadyFirstPlayer = false;
+                    _isRooledAllreadySecondPlayer = false;
+                }
             }
         }
 
         private void TwoPlayers()
         {
-            if (!_endOfGame)
-            {
-                if (!_endOfFirstPlayerTurn)
+                if (!_endOfGame && !_endOfFirstPlayerTurn)
                 {
                     Play(_player1, ref _endOfFirstPlayerTurn);
                     IfWinShowMsg(_player1);
                 }
-                else
+                else if (!_endOfGame)
                 {
                     Play(_player2, ref _endOfSecondPlayerTurn);
                     IfWinShowMsg(_player2);
@@ -175,16 +183,15 @@ namespace Backgammon
                         _isRooledAllreadyFirstPlayer = false;
                     }
                 }
-                if (_endOfFirstPlayerTurn && !_isRooledAllreadySecondPlayer)
-                {
-                    RollTheDice(_player2, ref _endOfSecondPlayerTurn);
-                }
-                else if (!_isRooledAllreadyFirstPlayer)
-                {
-                    RollTheDice(_player1, ref _endOfFirstPlayerTurn);
-                    _isRooledAllreadyFirstPlayer = true;
-                    _isRooledAllreadySecondPlayer = false;
-                }
+            if (!_endOfGame && _endOfFirstPlayerTurn && !_isRooledAllreadySecondPlayer)
+            {
+                RollTheDice(_player2, ref _endOfSecondPlayerTurn);
+            }
+            else if (!_endOfGame && !_isRooledAllreadyFirstPlayer)
+            {
+                RollTheDice(_player1, ref _endOfFirstPlayerTurn);
+                _isRooledAllreadyFirstPlayer = true;
+                _isRooledAllreadySecondPlayer = false;
             }
 
             PrintAllBoard();
@@ -193,7 +200,6 @@ namespace Backgammon
         private void ComputerPlay()
         {
             bool endOfTurn = false;
-            _exceptionInfo.Visible = false;
             if (_game.PlayerRollTheDice(_game.Computer))
             {
                 SetComputerDice();
