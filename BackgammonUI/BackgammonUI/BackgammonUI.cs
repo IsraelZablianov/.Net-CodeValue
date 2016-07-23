@@ -67,7 +67,7 @@ Two players enter '2'.";
             int rematchAnswer = 0;
             do
             {
-                //_game.InitializeGame();
+                _game.InitializeGame();
                 Start(_player1, _player2, isComputerPlayer);
                 do
                 {
