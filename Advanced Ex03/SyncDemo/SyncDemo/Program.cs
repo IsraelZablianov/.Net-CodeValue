@@ -14,17 +14,17 @@ namespace SyncDemo
 
             var dir = Directory.CreateDirectory(@"c:\temp");
             var path = Path.Combine(dir.FullName, "data.txt");
-            Task.Run(() =>
+            var task1 = Task.Run(() =>
             {
                 new HelperClass().Write(path);
             });
 
-            Task.Run(() =>
+            var task2 = Task.Run(() =>
             {
                 new HelperClass().Write(path);
             });
 
-            Task.WaitAll();
+            Task.WaitAll(task1, task2);
         }
     }
 }
