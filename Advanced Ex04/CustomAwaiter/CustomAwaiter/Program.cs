@@ -15,6 +15,7 @@ namespace CustomAwaiter
             //helper.AwaitIntAsync(3000);
             Process myProcess;
             myProcess = Process.Start("Notepad.exe");
+            myProcess.EnableRaisingEvents = true;
             helper.AwaitProcessAsync(myProcess);
             Console.ReadLine();
         }
