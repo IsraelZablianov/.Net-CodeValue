@@ -48,6 +48,7 @@ namespace Primes
             this._outputFileTextBox.Name = "_outputFileTextBox";
             this._outputFileTextBox.Size = new System.Drawing.Size(154, 20);
             this._outputFileTextBox.TabIndex = 0;
+            this._outputFileTextBox.Text = string.Empty;
             // 
             // _endTextBox
             // 
@@ -169,9 +170,14 @@ namespace Primes
 
         private async void Calculate_Click(object sender, EventArgs e)
         {
+            _cancellationTokenSource = new CancellationTokenSource();
             var taskResult = await CalcPrimesAsync();
-            File.WriteAllText(
-                _outputFileTextBox.Text, taskResult.ToString());
+            _cancellationTokenSource.Dispose();
+            if (_outputFileTextBox.Text != string.Empty)
+            {
+                File.WriteAllText(
+                    _outputFileTextBox.Text, taskResult.ToString());
+            }
         }
 
         private void Cancel_Click(object sender, EventArgs e)
