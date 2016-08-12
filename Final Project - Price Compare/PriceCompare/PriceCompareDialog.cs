@@ -16,17 +16,17 @@ namespace PriceCompare
     public partial class PriceCompareDialog : Form
     {
         private XElement _xDoc1;
-        private XElement xDoc2;
+        private XElement _xDoc2;
         private XElement _xDoc3;
         private List<string> _chainNames = new List<string>();
 
         public PriceCompareDialog()
         {
             InitializeComponent();
-            LoadChainsName();
+            LoadChainNames();
         }
 
-        private void LoadChainsName()
+        private void LoadChainNames()
         {
             FileInfo[] filesInDir = GetStoresFileInfoOfChain(string.Empty);
 
@@ -51,7 +51,7 @@ namespace PriceCompare
             return filesInDir;
         }
 
-        private void LoadStoresName(string path, XElement XElementDoc, ComboBox cBoxStoreNames)
+        private void LoadStoreNames(string path, XElement XElementDoc, ComboBox cBoxStoreNames)
         {
             XElementDoc = XElement.Load(path);
             var storeNames = (from store
@@ -70,21 +70,21 @@ namespace PriceCompare
         {
             var sendr = sender as ComboBox;
             FileInfo[] filesInDir = GetStoresFileInfoOfChain((string)sendr.SelectedItem);
-            LoadStoresName(filesInDir[0].FullName, _xDoc1, _cBoxStores1);
+            LoadStoreNames(filesInDir[0].FullName, _xDoc1, _cBoxStores1);
         }
 
         private void _cBox2Chain_SelectedIndexChanged(object sender, EventArgs e)
         {
             var sendr = sender as ComboBox;
             FileInfo[] filesInDir = GetStoresFileInfoOfChain((string)sendr.SelectedItem);
-            LoadStoresName(filesInDir[0].FullName, xDoc2, _cBoxStores2);
+            LoadStoreNames(filesInDir[0].FullName, _xDoc2, _cBoxStores2);
         }
 
         private void _cBox3Chain_SelectedIndexChanged(object sender, EventArgs e)
         {
             var sendr = sender as ComboBox;
             FileInfo[] filesInDir = GetStoresFileInfoOfChain((string)sendr.SelectedItem);
-            LoadStoresName(filesInDir[0].FullName, _xDoc3, _cBoxStores3);
+            LoadStoreNames(filesInDir[0].FullName, _xDoc3, _cBoxStores3);
         }
     }
 }
