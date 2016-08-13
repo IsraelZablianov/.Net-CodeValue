@@ -34,7 +34,10 @@
             this._cBoxStores3 = new System.Windows.Forms.ComboBox();
             this._cBoxStores2 = new System.Windows.Forms.ComboBox();
             this._cBox3Chain = new System.Windows.Forms.ComboBox();
-            this._products = new System.Windows.Forms.ComboBox();
+            this._items = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this._shoppingCart = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // _cBox1Chain
@@ -112,40 +115,80 @@
             this._cBox3Chain.TabIndex = 5;
             this._cBox3Chain.SelectedIndexChanged += new System.EventHandler(this._cBox3Chain_SelectedIndexChanged);
             // 
-            // _products
+            // _items
             // 
-            this._products.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this._products.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this._products.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this._products.FormattingEnabled = true;
-            this._products.Items.AddRange(new object[] {
-            "first",
-            "five",
-            "four",
-            "second",
-            "six",
-            "third"});
-            this._products.Location = new System.Drawing.Point(493, 12);
-            this._products.Name = "_products";
-            this._products.Size = new System.Drawing.Size(128, 176);
-            this._products.Sorted = true;
-            this._products.TabIndex = 6;
+            this._items.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this._items.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this._items.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this._items.ForeColor = System.Drawing.SystemColors.InfoText;
+            this._items.FormattingEnabled = true;
+            this._items.Location = new System.Drawing.Point(12, 222);
+            this._items.Name = "_items";
+            this._items.Size = new System.Drawing.Size(143, 163);
+            this._items.Sorted = true;
+            this._items.TabIndex = 6;
+            this._items.SelectedIndexChanged += new System.EventHandler(this._items_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Image = global::PriceCompare.Properties.Resources.רשת_שיווק_364x245;
+            this.label1.Location = new System.Drawing.Point(61, 206);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "מוצרים";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // _shoppingCart
+            // 
+            this._shoppingCart.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this._shoppingCart.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this._shoppingCart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this._shoppingCart.ForeColor = System.Drawing.SystemColors.InfoText;
+            this._shoppingCart.FormattingEnabled = true;
+            this._shoppingCart.Location = new System.Drawing.Point(171, 222);
+            this._shoppingCart.Name = "_shoppingCart";
+            this._shoppingCart.Size = new System.Drawing.Size(143, 163);
+            this._shoppingCart.Sorted = true;
+            this._shoppingCart.TabIndex = 8;
+            this._shoppingCart.SelectedIndexChanged += new System.EventHandler(this._shoppingCart_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.Image = global::PriceCompare.Properties.Resources.רשת_שיווק_364x245;
+            this.label2.Location = new System.Drawing.Point(212, 206);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "סל הקניות";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PriceCompareDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(643, 397);
-            this.Controls.Add(this._products);
+            this.BackgroundImage = global::PriceCompare.Properties.Resources.רשת_שיווק_364x245;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(668, 397);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this._shoppingCart);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this._items);
             this.Controls.Add(this._cBox3Chain);
             this.Controls.Add(this._cBoxStores2);
             this.Controls.Add(this._cBoxStores3);
             this.Controls.Add(this._cBox2Chain);
             this.Controls.Add(this._cBoxStores1);
             this.Controls.Add(this._cBox1Chain);
+            this.MaximizeBox = false;
             this.Name = "PriceCompareDialog";
             this.Text = "Price Compare";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -157,7 +200,10 @@
         private System.Windows.Forms.ComboBox _cBoxStores3;
         private System.Windows.Forms.ComboBox _cBoxStores2;
         private System.Windows.Forms.ComboBox _cBox3Chain;
-        private System.Windows.Forms.ComboBox _products;
+        private System.Windows.Forms.ComboBox _items;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox _shoppingCart;
+        private System.Windows.Forms.Label label2;
     }
 }
 

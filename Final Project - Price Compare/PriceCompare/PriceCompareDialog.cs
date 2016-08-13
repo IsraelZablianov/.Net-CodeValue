@@ -13,59 +13,77 @@ using System.Xml.Linq;
 
 namespace PriceCompare
 {
-    public partial class PriceCompareDialog : Form
+    public partial class PriceCompareDialog : Form, IChainHendler
     {
-        private List<string> _chainNames = new List<string>();
-
         public PriceCompareDialog()
         {
             InitializeComponent();
-            LoadChainNames();
+            var chainNames = GetListOfChains();
+            _cBox1Chain.Items.AddRange(chainNames.ToArray<object>());
+            _cBox2Chain.Items.AddRange(chainNames.ToArray<object>());
+            _cBox3Chain.Items.AddRange(chainNames.ToArray<object>());
+            AddItemsToCBox("חצי חינם");
         }
 
-        private void LoadChainNames()
+        public List<string> GetListOfChains()
         {
-            FileInfo[] filesInDir = GetStoresFileInfoOfChain(string.Empty);
+            FileInfo[] filesInDir = GetFileInfo(string.Empty, "Stores");
+            List<string> chainNames = new List<string>();
 
             foreach (FileInfo foundFile in filesInDir)
             {
-                _chainNames.Add(foundFile.Directory.Name);
+                chainNames.Add(foundFile.Directory.Name);
             }
 
-            _cBox1Chain.Items.AddRange(_chainNames.ToArray<object>());
-            _cBox2Chain.Items.AddRange(_chainNames.ToArray<object>());
-            _cBox3Chain.Items.AddRange(_chainNames.ToArray<object>());
+            return chainNames;
         }
 
-        private FileInfo[] GetStoresFileInfoOfChain(string chainDirName)
+        public List<string> GetListOfStores(string chainDirName)
         {
-            string partialName = "Store";
-            var dirPath = Directory.GetCurrentDirectory();
-            dirPath = Path.Combine(dirPath, chainDirName);
-            var directoryInWhichToSearch = new DirectoryInfo(dirPath);
-            FileInfo[] filesInDir = directoryInWhichToSearch.GetFiles($"*{partialName}*.*", SearchOption.AllDirectories);
-
-            return filesInDir;
-        }
-
-        private void LoadStoreNamesOfChain(string chainDirName, ComboBox cBoxStoreNames)
-        {
-            FileInfo[] filesInDir = GetStoresFileInfoOfChain(chainDirName);
+            FileInfo[] filesInDir = GetFileInfo(chainDirName, "Stores");
             var storesFilePath = filesInDir[0].FullName;
             var XElementDoc = XElement.Load(storesFilePath);
             var storeNames = (from store
                               in XElementDoc.Descendants()
                               .Where(el => string.Compare(el.Name.LocalName, "Store",
                                StringComparison.OrdinalIgnoreCase) == 0)
-                               select (string)store
-                              .Element("StoreName"))
-                              .ToArray<object>();
+                              select (string)store
+                             .Element("StoreName"))
+                              .ToList();
 
+            return storeNames;
+        }
+
+        public FileInfo[] GetFileInfo(string chainDirName, string partialFileName)
+        {
+            var dirPath = Directory.GetCurrentDirectory();
+            dirPath = Path.Combine(dirPath, chainDirName);
+            var directoryInWhichToSearch = new DirectoryInfo(dirPath);
+            FileInfo[] filesInDir = directoryInWhichToSearch.GetFiles($"*{partialFileName}*.*", SearchOption.AllDirectories);
+
+            return filesInDir;
+        }
+
+        public List<string> GetListOfItems(string storePriceFullPath)
+        {
+            var XElementDoc = XElement.Load(storePriceFullPath);
+            var ItemNames = (from store
+                              in XElementDoc.Descendants("Item")
+                              select (string)store
+                             .Element("ItemName"))
+                              .ToList();
+
+            return ItemNames;
+        }
+
+        private void AddStoreNamesToCBox(string chainDirName, ComboBox cBoxStoreNames)
+        {
+            var storeNames = GetListOfStores(chainDirName);
             cBoxStoreNames.Items.Clear();
 
             try
             {
-                cBoxStoreNames.Items.AddRange(storeNames);
+                cBoxStoreNames.Items.AddRange(storeNames.ToArray<object>());
             }
             catch (ArgumentNullException ex)
             {
@@ -74,22 +92,55 @@ namespace PriceCompare
             }
         }
 
+        private async void AddItemsToCBox(string ChainDirName)
+        {
+            var items = new Dictionary<string, object>();
+            FileInfo[] filesOfFullPrice =  GetFileInfo(ChainDirName, "PriceFull");
+            List<string> listOfItems = null;
+            await Task.Run(() =>
+            {
+                foreach (var file in filesOfFullPrice)
+                {
+                    listOfItems = GetListOfItems(file.FullName);
+                    foreach (var item in listOfItems)
+                    {
+                        if (!items.ContainsKey(item))
+                        {
+                            items.Add(item, null);
+                        }
+                    }
+                }
+            });
+
+            _items.Items.AddRange(items.Keys.ToArray<object>());
+        }
+
         private void _cBox1Chain_SelectedIndexChanged(object sender, EventArgs e)
         {
             var sendr = sender as ComboBox;
-            LoadStoreNamesOfChain((string)sendr.SelectedItem, _cBoxStores1);
+            AddStoreNamesToCBox((string)sendr.SelectedItem, _cBoxStores1);
         }
 
         private void _cBox2Chain_SelectedIndexChanged(object sender, EventArgs e)
         {
             var sendr = sender as ComboBox;
-            LoadStoreNamesOfChain((string)sendr.SelectedItem, _cBoxStores2);
+            AddStoreNamesToCBox((string)sendr.SelectedItem, _cBoxStores2);
         }
 
         private void _cBox3Chain_SelectedIndexChanged(object sender, EventArgs e)
         {
             var sendr = sender as ComboBox;
-            LoadStoreNamesOfChain((string)sendr.SelectedItem, _cBoxStores3);
+            AddStoreNamesToCBox((string)sendr.SelectedItem, _cBoxStores3);
+        }
+
+        private void _items_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _shoppingCart.Items.Add((sender as ComboBox).SelectedItem);
+        }
+
+        private void _shoppingCart_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            (sender as ComboBox).Items.Remove((sender as ComboBox).SelectedItem);
         }
     }
 }

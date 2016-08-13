@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IChainHendler.cs" />
     <Compile Include="PriceCompareDialog.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -68,6 +69,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -86,6 +88,7 @@
     <Content Include="LogFiles\LoadingNamesFromFilesLog.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\רשת-שיווק-364x245.jpg" />
     <Content Include="חצי חינם\Price7290700100008-002-201608130800.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -116,13 +119,19 @@
     <Content Include="חצי חינם\PriceFull7290700100008-006-201608130010.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="חצי חינם\PriceFull7290700100008-007-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="חצי חינם\PriceFull7290700100008-008-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="חצי חינם\PriceFull7290700100008-009-201608130010.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="חצי חינם\PriceFull7290700100008-010-201608130010.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="חצי חינם\PriceFull7290700100008-017-201608130010 - Copy.xml">
+    <Content Include="חצי חינם\PriceFull7290700100008-017-201608130010.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="טיב טעם\Price7290873255550-002-201608131300.xml">
