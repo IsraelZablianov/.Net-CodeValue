@@ -25,6 +25,7 @@ namespace PriceCompare
             _cBox1Chain.Items.AddRange(chainNames.ToArray<object>());
             _cBox2Chain.Items.AddRange(chainNames.ToArray<object>());
             _cBox3Chain.Items.AddRange(chainNames.ToArray<object>());
+            //for pilot adding all items of every store of "חצי חינם"
             AddProductItemsToCBox("חצי חינם");
         }
 
@@ -65,25 +66,56 @@ namespace PriceCompare
             return filesInDir;
         }
 
-        public Dictionary<string, double> GetItemsPrice(string dirName, string storeName)
+        public Dictionary<string, double> GetItemPrices(string dirName, string storeName, List<string> items)
         {
-            return null;
+            var itemPrices = new Dictionary<string, double>();
+            double price = 0;
+            var uri = GetStoreFullPath(dirName, storeName);
+            XElement XElementDoc = null;
+
+            if (uri != string.Empty)
+            {
+                XElementDoc = XElement.Load(uri);
+            
+                foreach (var itemName in items)
+                {
+                    price = (from element in XElementDoc.Descendants()
+                                 .Where(el => string.Compare(el.Name.LocalName, "Item",
+                                  StringComparison.OrdinalIgnoreCase) == 0)
+                                  where (string)element.Element("ItemName") == itemName
+                                  select (double)element.Element("ItemPrice")).FirstOrDefault();
+                    itemPrices.Add(itemName, price);
+                }
+            }
+
+            return itemPrices;
         }
 
-        public string GetStoreFullPath(string dirName, string storeName)
+        private string GetStoreFullPath(string dirName, string storeName)
         {
             FileInfo[] fileInfo = GetFileInfo(dirName, "Stores");
             var XElementDoc = XElement.Load(fileInfo[0].FullName);
-            var listOfElements = (from element
-                              in (XElementDoc.Descendants()
+            string fileFullPath = string.Empty;
+            var storeId = (from element in (XElementDoc.Descendants()
                               .Where(el => string.Compare(el.Name.LocalName, "Store",
                                StringComparison.OrdinalIgnoreCase) == 0))
                                where (string)element.Element("StoreName") == storeName
-                                  select (string)element
-                                 .Element("StoreId"))
-                              .ToList();
+                               select (string)element.Element("StoreId"))
+                              .ToList().First();
+            var storeIdInFormOf3Digits = string.Format("{0:000}", int.Parse(storeId));
 
-            return listOfElements.First();
+            try
+            {
+                FileInfo[] files = GetFileInfo(dirName, $"Price*Full*-{storeIdInFormOf3Digits}-");
+                fileFullPath = files[0].FullName;
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                File.WriteAllText(@"LogFiles\LoadingNamesFromFilesLog.txt",
+                    $"StackTrace = {ex.StackTrace}, Message = { ex.Message} didnt find the file price of store");
+            }
+
+            return fileFullPath;
         }
 
         private void AddStoreNamesToCBox(string dirName, ComboBox cBoxStoreNames)
@@ -153,6 +185,22 @@ namespace PriceCompare
         private void ShoppingCart_SelectedIndexChanged(object sender, EventArgs e)
         {
             (sender as ComboBox).Items.Remove((sender as ComboBox).SelectedItem);
+        }
+
+        private void Compare_Click(object sender, EventArgs e)
+        {
+            var data = new StringBuilder();
+            var items = GetItemPrices((string)_cBox1Chain.SelectedItem,
+                (string)_cBoxStores1.SelectedItem,
+                _shoppingCart.Items.Cast<string>().ToList());
+
+            foreach (var item in items)
+            {
+                data.AppendFormat(@"{1} = {0}{2}", 
+                    item.Key, item.Value, Environment.NewLine);
+            }
+
+            MessageBox.Show(data.ToString());
         }
     }
 }

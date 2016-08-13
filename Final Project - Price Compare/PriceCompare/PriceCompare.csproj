@@ -177,6 +177,12 @@
     <Content Include="טיב טעם\PriceFull7290873255550-010-201608130010.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-012-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-013-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="טיב טעם\PriceFull7290873255550-014-201608130010.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -195,7 +201,25 @@
     <Content Include="טיב טעם\PriceFull7290873255550-020-201608130010.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-021-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-030-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="טיב טעם\PriceFull7290873255550-050-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-051-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-052-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-054-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-055-201608130010.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="טיב טעם\PriceFull7290873255550-056-201608130010.xml">

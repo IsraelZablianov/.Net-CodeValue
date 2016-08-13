@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this._shoppingCart = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.Compare = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // _cBox1Chain
@@ -167,13 +168,25 @@
             this.label2.Text = "סל הקניות";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // Compare
+            // 
+            this.Compare.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.Compare.Location = new System.Drawing.Point(499, 12);
+            this.Compare.Name = "Compare";
+            this.Compare.Size = new System.Drawing.Size(101, 33);
+            this.Compare.TabIndex = 10;
+            this.Compare.Text = "Compare";
+            this.Compare.UseVisualStyleBackColor = true;
+            this.Compare.Click += new System.EventHandler(this.Compare_Click);
+            // 
             // PriceCompareDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::PriceCompare.Properties.Resources.רשת_שיווק_364x245;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(668, 397);
+            this.ClientSize = new System.Drawing.Size(616, 397);
+            this.Controls.Add(this.Compare);
             this.Controls.Add(this.label2);
             this.Controls.Add(this._shoppingCart);
             this.Controls.Add(this.label1);
@@ -204,6 +217,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox _shoppingCart;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button Compare;
     }
 }
 
