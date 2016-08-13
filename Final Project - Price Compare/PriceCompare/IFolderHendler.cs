@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace PriceCompare
 {
-    public interface IFoldersHendler
+    public interface IFolderHendler
     {
         List<string> GetListOfDirectoriesFromCurrentDirectory();
         FileInfo[] GetFileInfo(string dirName, string partialFileName);

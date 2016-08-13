@@ -51,7 +51,7 @@
             this._cBox1Chain.Size = new System.Drawing.Size(143, 85);
             this._cBox1Chain.Sorted = true;
             this._cBox1Chain.TabIndex = 0;
-            this._cBox1Chain.SelectedIndexChanged += new System.EventHandler(this._cBox1Chain_SelectedIndexChanged);
+            this._cBox1Chain.SelectedIndexChanged += new System.EventHandler(this.CBox1Chain_SelectedIndexChanged);
             // 
             // _cBoxStores1
             // 
@@ -76,7 +76,7 @@
             this._cBox2Chain.Size = new System.Drawing.Size(143, 85);
             this._cBox2Chain.Sorted = true;
             this._cBox2Chain.TabIndex = 2;
-            this._cBox2Chain.SelectedIndexChanged += new System.EventHandler(this._cBox2Chain_SelectedIndexChanged);
+            this._cBox2Chain.SelectedIndexChanged += new System.EventHandler(this.CBox2Chain_SelectedIndexChanged);
             // 
             // _cBoxStores3
             // 
@@ -113,7 +113,7 @@
             this._cBox3Chain.Size = new System.Drawing.Size(143, 85);
             this._cBox3Chain.Sorted = true;
             this._cBox3Chain.TabIndex = 5;
-            this._cBox3Chain.SelectedIndexChanged += new System.EventHandler(this._cBox3Chain_SelectedIndexChanged);
+            this._cBox3Chain.SelectedIndexChanged += new System.EventHandler(this.CBox3Chain_SelectedIndexChanged);
             // 
             // _items
             // 
@@ -127,7 +127,7 @@
             this._items.Size = new System.Drawing.Size(143, 163);
             this._items.Sorted = true;
             this._items.TabIndex = 6;
-            this._items.SelectedIndexChanged += new System.EventHandler(this._items_SelectedIndexChanged);
+            this._items.SelectedIndexChanged += new System.EventHandler(this.Items_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -153,7 +153,7 @@
             this._shoppingCart.Size = new System.Drawing.Size(143, 163);
             this._shoppingCart.Sorted = true;
             this._shoppingCart.TabIndex = 8;
-            this._shoppingCart.SelectedIndexChanged += new System.EventHandler(this._shoppingCart_SelectedIndexChanged);
+            this._shoppingCart.SelectedIndexChanged += new System.EventHandler(this.ShoppingCart_SelectedIndexChanged);
             // 
             // label2
             // 

@@ -13,7 +13,7 @@ using System.Xml.Linq;
 
 namespace PriceCompare
 {
-    public partial class PriceCompareDialog : Form, IFoldersHendler, IXmlParse
+    public partial class PriceCompareDialog : Form, IFolderHendler, IXmlParse
     {
         private ToolTip _toolTip = new ToolTip();
 
@@ -65,6 +65,27 @@ namespace PriceCompare
             return filesInDir;
         }
 
+        public Dictionary<string, double> GetItemsPrice(string dirName, string storeName)
+        {
+            return null;
+        }
+
+        public string GetStoreFullPath(string dirName, string storeName)
+        {
+            FileInfo[] fileInfo = GetFileInfo(dirName, "Stores");
+            var XElementDoc = XElement.Load(fileInfo[0].FullName);
+            var listOfElements = (from element
+                              in (XElementDoc.Descendants()
+                              .Where(el => string.Compare(el.Name.LocalName, "Store",
+                               StringComparison.OrdinalIgnoreCase) == 0))
+                               where (string)element.Element("StoreName") == storeName
+                                  select (string)element
+                                 .Element("StoreId"))
+                              .ToList();
+
+            return listOfElements.First();
+        }
+
         private void AddStoreNamesToCBox(string dirName, ComboBox cBoxStoreNames)
         {
             FileInfo[] filesInDir = GetFileInfo(dirName, "Stores");
@@ -106,30 +127,30 @@ namespace PriceCompare
             _items.Items.AddRange(items.Keys.ToArray<object>());
         }
 
-        private void _cBox1Chain_SelectedIndexChanged(object sender, EventArgs e)
+        private void CBox1Chain_SelectedIndexChanged(object sender, EventArgs e)
         {
             var sendr = sender as ComboBox;
             AddStoreNamesToCBox((string)sendr.SelectedItem, _cBoxStores1);
         }
 
-        private void _cBox2Chain_SelectedIndexChanged(object sender, EventArgs e)
+        private void CBox2Chain_SelectedIndexChanged(object sender, EventArgs e)
         {
             var sendr = sender as ComboBox;
             AddStoreNamesToCBox((string)sendr.SelectedItem, _cBoxStores2);
         }
 
-        private void _cBox3Chain_SelectedIndexChanged(object sender, EventArgs e)
+        private void CBox3Chain_SelectedIndexChanged(object sender, EventArgs e)
         {
             var sendr = sender as ComboBox;
             AddStoreNamesToCBox((string)sendr.SelectedItem, _cBoxStores3);
         }
 
-        private void _items_SelectedIndexChanged(object sender, EventArgs e)
+        private void Items_SelectedIndexChanged(object sender, EventArgs e)
         {
             _shoppingCart.Items.Add((sender as ComboBox).SelectedItem);
         }
 
-        private void _shoppingCart_SelectedIndexChanged(object sender, EventArgs e)
+        private void ShoppingCart_SelectedIndexChanged(object sender, EventArgs e)
         {
             (sender as ComboBox).Items.Remove((sender as ComboBox).SelectedItem);
         }
