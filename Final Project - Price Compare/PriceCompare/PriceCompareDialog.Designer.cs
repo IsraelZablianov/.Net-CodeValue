@@ -45,7 +45,7 @@
             this._cBox1Chain.FormattingEnabled = true;
             this._cBox1Chain.Location = new System.Drawing.Point(12, 12);
             this._cBox1Chain.Name = "_cBox1Chain";
-            this._cBox1Chain.Size = new System.Drawing.Size(128, 85);
+            this._cBox1Chain.Size = new System.Drawing.Size(143, 85);
             this._cBox1Chain.Sorted = true;
             this._cBox1Chain.TabIndex = 0;
             this._cBox1Chain.SelectedIndexChanged += new System.EventHandler(this._cBox1Chain_SelectedIndexChanged);
@@ -58,7 +58,7 @@
             this._cBoxStores1.FormattingEnabled = true;
             this._cBoxStores1.Location = new System.Drawing.Point(12, 103);
             this._cBoxStores1.Name = "_cBoxStores1";
-            this._cBoxStores1.Size = new System.Drawing.Size(128, 85);
+            this._cBoxStores1.Size = new System.Drawing.Size(143, 85);
             this._cBoxStores1.Sorted = true;
             this._cBoxStores1.TabIndex = 1;
             // 
@@ -68,9 +68,9 @@
             this._cBox2Chain.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this._cBox2Chain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this._cBox2Chain.FormattingEnabled = true;
-            this._cBox2Chain.Location = new System.Drawing.Point(156, 12);
+            this._cBox2Chain.Location = new System.Drawing.Point(171, 12);
             this._cBox2Chain.Name = "_cBox2Chain";
-            this._cBox2Chain.Size = new System.Drawing.Size(129, 85);
+            this._cBox2Chain.Size = new System.Drawing.Size(143, 85);
             this._cBox2Chain.Sorted = true;
             this._cBox2Chain.TabIndex = 2;
             this._cBox2Chain.SelectedIndexChanged += new System.EventHandler(this._cBox2Chain_SelectedIndexChanged);
@@ -81,9 +81,9 @@
             this._cBoxStores3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this._cBoxStores3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this._cBoxStores3.FormattingEnabled = true;
-            this._cBoxStores3.Location = new System.Drawing.Point(301, 103);
+            this._cBoxStores3.Location = new System.Drawing.Point(337, 103);
             this._cBoxStores3.Name = "_cBoxStores3";
-            this._cBoxStores3.Size = new System.Drawing.Size(123, 85);
+            this._cBoxStores3.Size = new System.Drawing.Size(143, 85);
             this._cBoxStores3.Sorted = true;
             this._cBoxStores3.TabIndex = 3;
             // 
@@ -93,9 +93,9 @@
             this._cBoxStores2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this._cBoxStores2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this._cBoxStores2.FormattingEnabled = true;
-            this._cBoxStores2.Location = new System.Drawing.Point(156, 103);
+            this._cBoxStores2.Location = new System.Drawing.Point(171, 103);
             this._cBoxStores2.Name = "_cBoxStores2";
-            this._cBoxStores2.Size = new System.Drawing.Size(129, 85);
+            this._cBoxStores2.Size = new System.Drawing.Size(143, 85);
             this._cBoxStores2.Sorted = true;
             this._cBoxStores2.TabIndex = 4;
             // 
@@ -105,9 +105,9 @@
             this._cBox3Chain.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this._cBox3Chain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this._cBox3Chain.FormattingEnabled = true;
-            this._cBox3Chain.Location = new System.Drawing.Point(301, 12);
+            this._cBox3Chain.Location = new System.Drawing.Point(337, 12);
             this._cBox3Chain.Name = "_cBox3Chain";
-            this._cBox3Chain.Size = new System.Drawing.Size(123, 85);
+            this._cBox3Chain.Size = new System.Drawing.Size(143, 85);
             this._cBox3Chain.Sorted = true;
             this._cBox3Chain.TabIndex = 5;
             this._cBox3Chain.SelectedIndexChanged += new System.EventHandler(this._cBox3Chain_SelectedIndexChanged);
@@ -125,7 +125,7 @@
             "second",
             "six",
             "third"});
-            this._products.Location = new System.Drawing.Point(447, 12);
+            this._products.Location = new System.Drawing.Point(493, 12);
             this._products.Name = "_products";
             this._products.Size = new System.Drawing.Size(128, 176);
             this._products.Sorted = true;

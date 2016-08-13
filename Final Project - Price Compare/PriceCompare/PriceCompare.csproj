@@ -48,14 +48,17 @@
   <ItemGroup>
     <Compile Include="PriceCompareDialog.cs">
       <SubType>Form</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="PriceCompareDialog.Designer.cs">
       <DependentUpon>PriceCompareDialog.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="PriceCompareDialog.resx">
       <DependentUpon>PriceCompareDialog.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -80,19 +83,274 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="קואופ\PricesFull7290633800006-2-201608130003.xml">
+    <Content Include="LogFiles\LoadingNamesFromFilesLog.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="חצי חינם\Price7290700100008-002-201608130800.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="חצי חינם\Price7290700100008-004-201608130800.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="חצי חינם\Price7290700100008-005-201608130800.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="חצי חינם\Price7290700100008-006-201608130800.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="חצי חינם\Price7290700100008-009-201608130800.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="חצי חינם\PriceFull7290700100008-001-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="חצי חינם\PriceFull7290700100008-002-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="חצי חינם\PriceFull7290700100008-004-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="חצי חינם\PriceFull7290700100008-005-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="חצי חינם\PriceFull7290700100008-006-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="חצי חינם\PriceFull7290700100008-009-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="חצי חינם\PriceFull7290700100008-010-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="חצי חינם\PriceFull7290700100008-017-201608130010 - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\Price7290873255550-002-201608131300.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\Price7290873255550-003-201608131300.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\Price7290873255550-012-201608131000.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\Price7290873255550-014-201608131000.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\Price7290873255550-019-201608130900.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\Price7290873255550-051-201608131000.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\Price7290873255550-056-201608131200.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\Price7290873255550-068-201608130600.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-002-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-003-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-005-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-006-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-007-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-010-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-014-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-015-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-017-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-018-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-019-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-020-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-050-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-056-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-057-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-058-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-059-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-060-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-061-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-062-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-063-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-065-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-067-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-068-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-070-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-071-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="טיב טעם\PriceFull7290873255550-081-201608130010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-10-201608131437 - Copy - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-11-201608131437 - Copy - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-12-201608131437 - Copy - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-13-201608131437 - Copy - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-17-201608131438 - Copy - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-18-201608131438 - Copy - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-2-201608130003 - Copy - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-20-201608131438 - Copy - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-22-201608131438 - Copy - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-23-201608131438 - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-3-201608131437 - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-30-201608131438 - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-31-201608131438 - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-38-201608131438 - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-39-201608131438 - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-4-201608131437 - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-41-201608131438 - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-42-201608131438 - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-44-201608131438 - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-45-201608131438 - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-46-201608131438 - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-47-201608131439 - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-48-201608131439.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-5-201608131437.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-50-201608131439 - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-54-201608131439.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-60-201608131439 - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-61-201608131439.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-63-201608131439.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-64-201608131439 - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-65-201608131439.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-66-201608131439 - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-67-201608131440.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-68-201608131440 - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-7-201608131437.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-77-201608131440.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-8-201608131437.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-89-201608131440.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="קואופ\PricesFull7290633800006-90-201608131440.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="קואופ\Stores7290633800006-201608122240.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="חצי חינם\Stores7290700100008-201608122005.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="טיב טעם\Price7290873255550-002-201608121000.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="טיב טעם\PriceFull7290873255550-002-201608120010.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="טיב טעם\Stores7290873255550-201608112005.xml">

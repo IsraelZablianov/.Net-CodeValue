@@ -1,0 +1,4 @@
+   at System.Windows.Forms.ComboBox.ObjectCollection.AddInternal(Object item)
+   at System.Windows.Forms.ComboBox.ObjectCollection.AddRangeInternal(IList items)
+   at System.Windows.Forms.ComboBox.ObjectCollection.AddRange(Object[] items)
+   at PriceCompare.PriceCompareDialog.LoadStoreNamesOfChain(String chainDirName, ComboBox cBoxStoreNames) in C:\Users\israel\Documents\visual studio 2015\Projects\DotNetCourse\Final Project - Price Compare\PriceCompare\PriceCompareDialog.cs:line 68

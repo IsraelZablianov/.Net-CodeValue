@@ -15,9 +15,6 @@ namespace PriceCompare
 {
     public partial class PriceCompareDialog : Form
     {
-        private XElement _xDoc1;
-        private XElement _xDoc2;
-        private XElement _xDoc3;
         private List<string> _chainNames = new List<string>();
 
         public PriceCompareDialog()
@@ -51,9 +48,11 @@ namespace PriceCompare
             return filesInDir;
         }
 
-        private void LoadStoreNames(string path, XElement XElementDoc, ComboBox cBoxStoreNames)
+        private void LoadStoreNamesOfChain(string chainDirName, ComboBox cBoxStoreNames)
         {
-            XElementDoc = XElement.Load(path);
+            FileInfo[] filesInDir = GetStoresFileInfoOfChain(chainDirName);
+            var storesFilePath = filesInDir[0].FullName;
+            var XElementDoc = XElement.Load(storesFilePath);
             var storeNames = (from store
                               in XElementDoc.Descendants()
                               .Where(el => string.Compare(el.Name.LocalName, "Store",
@@ -63,28 +62,34 @@ namespace PriceCompare
                               .ToArray<object>();
 
             cBoxStoreNames.Items.Clear();
-            cBoxStoreNames.Items.AddRange(storeNames);
+
+            try
+            {
+                cBoxStoreNames.Items.AddRange(storeNames);
+            }
+            catch (ArgumentNullException ex)
+            {
+                File.WriteAllText(@"LogFiles\LoadingNamesFromFilesLog.txt",
+                    $"StackTrace = {ex.StackTrace}, Message = { ex.Message} apperntly there is no element as StoreName");
+            }
         }
 
         private void _cBox1Chain_SelectedIndexChanged(object sender, EventArgs e)
         {
             var sendr = sender as ComboBox;
-            FileInfo[] filesInDir = GetStoresFileInfoOfChain((string)sendr.SelectedItem);
-            LoadStoreNames(filesInDir[0].FullName, _xDoc1, _cBoxStores1);
+            LoadStoreNamesOfChain((string)sendr.SelectedItem, _cBoxStores1);
         }
 
         private void _cBox2Chain_SelectedIndexChanged(object sender, EventArgs e)
         {
             var sendr = sender as ComboBox;
-            FileInfo[] filesInDir = GetStoresFileInfoOfChain((string)sendr.SelectedItem);
-            LoadStoreNames(filesInDir[0].FullName, _xDoc2, _cBoxStores2);
+            LoadStoreNamesOfChain((string)sendr.SelectedItem, _cBoxStores2);
         }
 
         private void _cBox3Chain_SelectedIndexChanged(object sender, EventArgs e)
         {
             var sendr = sender as ComboBox;
-            FileInfo[] filesInDir = GetStoresFileInfoOfChain((string)sendr.SelectedItem);
-            LoadStoreNames(filesInDir[0].FullName, _xDoc3, _cBoxStores3);
+            LoadStoreNamesOfChain((string)sendr.SelectedItem, _cBoxStores3);
         }
     }
 }
