@@ -46,7 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IChainHendler.cs" />
+    <Compile Include="IFoldersHendler.cs" />
+    <Compile Include="IXmlParse.cs" />
     <Compile Include="PriceCompareDialog.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

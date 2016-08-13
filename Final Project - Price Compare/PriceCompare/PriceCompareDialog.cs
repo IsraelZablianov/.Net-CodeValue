@@ -13,19 +13,22 @@ using System.Xml.Linq;
 
 namespace PriceCompare
 {
-    public partial class PriceCompareDialog : Form, IChainHendler
+    public partial class PriceCompareDialog : Form, IFoldersHendler, IXmlParse
     {
+        private ToolTip _toolTip = new ToolTip();
+
         public PriceCompareDialog()
         {
             InitializeComponent();
-            var chainNames = GetListOfChains();
+            var chainNames = GetListOfDirectoriesFromCurrentDirectory();
+            _toolTip.SetToolTip(_shoppingCart, "Select item to delete");
             _cBox1Chain.Items.AddRange(chainNames.ToArray<object>());
             _cBox2Chain.Items.AddRange(chainNames.ToArray<object>());
             _cBox3Chain.Items.AddRange(chainNames.ToArray<object>());
-            AddItemsToCBox("חצי חינם");
+            AddProductItemsToCBox("חצי חינם");
         }
 
-        public List<string> GetListOfChains()
+        public List<string> GetListOfDirectoriesFromCurrentDirectory()
         {
             FileInfo[] filesInDir = GetFileInfo(string.Empty, "Stores");
             List<string> chainNames = new List<string>();
@@ -38,47 +41,35 @@ namespace PriceCompare
             return chainNames;
         }
 
-        public List<string> GetListOfStores(string chainDirName)
+        public List<string> GetListOfItemsFromXml(string xmlFullPath, string descendants, string elementName)
         {
-            FileInfo[] filesInDir = GetFileInfo(chainDirName, "Stores");
-            var storesFilePath = filesInDir[0].FullName;
-            var XElementDoc = XElement.Load(storesFilePath);
-            var storeNames = (from store
+            var XElementDoc = XElement.Load(xmlFullPath);
+            var listOfElements = (from element
                               in XElementDoc.Descendants()
-                              .Where(el => string.Compare(el.Name.LocalName, "Store",
+                              .Where(el => string.Compare(el.Name.LocalName, descendants,
                                StringComparison.OrdinalIgnoreCase) == 0)
-                              select (string)store
-                             .Element("StoreName"))
+                              select (string)element
+                             .Element(elementName))
                               .ToList();
 
-            return storeNames;
+            return listOfElements;
         }
 
-        public FileInfo[] GetFileInfo(string chainDirName, string partialFileName)
+        public FileInfo[] GetFileInfo(string dirName, string partialFileName)
         {
             var dirPath = Directory.GetCurrentDirectory();
-            dirPath = Path.Combine(dirPath, chainDirName);
+            dirPath = Path.Combine(dirPath, dirName);
             var directoryInWhichToSearch = new DirectoryInfo(dirPath);
             FileInfo[] filesInDir = directoryInWhichToSearch.GetFiles($"*{partialFileName}*.*", SearchOption.AllDirectories);
 
             return filesInDir;
         }
 
-        public List<string> GetListOfItems(string storePriceFullPath)
+        private void AddStoreNamesToCBox(string dirName, ComboBox cBoxStoreNames)
         {
-            var XElementDoc = XElement.Load(storePriceFullPath);
-            var ItemNames = (from store
-                              in XElementDoc.Descendants("Item")
-                              select (string)store
-                             .Element("ItemName"))
-                              .ToList();
-
-            return ItemNames;
-        }
-
-        private void AddStoreNamesToCBox(string chainDirName, ComboBox cBoxStoreNames)
-        {
-            var storeNames = GetListOfStores(chainDirName);
+            FileInfo[] filesInDir = GetFileInfo(dirName, "Stores");
+            var storesFilePath = filesInDir[0].FullName;
+            var storeNames = GetListOfItemsFromXml(storesFilePath, "Store", "StoreName");
             cBoxStoreNames.Items.Clear();
 
             try
@@ -92,16 +83,16 @@ namespace PriceCompare
             }
         }
 
-        private async void AddItemsToCBox(string ChainDirName)
+        private async void AddProductItemsToCBox(string dirName)
         {
             var items = new Dictionary<string, object>();
-            FileInfo[] filesOfFullPrice =  GetFileInfo(ChainDirName, "PriceFull");
+            FileInfo[] filesOfFullPrice =  GetFileInfo(dirName, "PriceFull");
             List<string> listOfItems = null;
             await Task.Run(() =>
             {
                 foreach (var file in filesOfFullPrice)
                 {
-                    listOfItems = GetListOfItems(file.FullName);
+                    listOfItems = GetListOfItemsFromXml(file.FullName, "Item", "ItemName");
                     foreach (var item in listOfItems)
                     {
                         if (!items.ContainsKey(item))

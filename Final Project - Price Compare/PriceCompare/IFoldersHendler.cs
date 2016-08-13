@@ -8,10 +8,9 @@ using System.Windows.Forms;
 
 namespace PriceCompare
 {
-    public interface IChainHendler
+    public interface IFoldersHendler
     {
-        List<string> GetListOfChains();
-        List<string> GetListOfStores(string chainDirName);
-        FileInfo[] GetFileInfo(string chainDirName, string partialFileName);
+        List<string> GetListOfDirectoriesFromCurrentDirectory();
+        FileInfo[] GetFileInfo(string dirName, string partialFileName);
     }
 }
