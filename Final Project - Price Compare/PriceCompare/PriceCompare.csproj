@@ -58,6 +58,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuantitySelectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <EmbeddedResource Include="PriceCompareDialog.resx">
       <DependentUpon>PriceCompareDialog.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -72,6 +78,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="QuantitySelectionForm.resx">
+      <DependentUpon>QuantitySelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report.resx">
+      <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -90,6 +102,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\רשת-שיווק-364x245.jpg" />
+    <None Include="Resources\products.jpg" />
     <Content Include="חצי חינם\Price7290700100008-002-201608130800.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

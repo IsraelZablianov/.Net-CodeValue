@@ -16,12 +16,14 @@ namespace PriceCompare
     public partial class PriceCompareDialog : Form, IFolderHendler, IXmlParse
     {
         private ToolTip _toolTip = new ToolTip();
+        private Dictionary<string, double> _itemsAmount = new Dictionary<string, double>();
+        private QuantitySelectionForm _quantitySelection = new QuantitySelectionForm();
 
         public PriceCompareDialog()
         {
             InitializeComponent();
             var chainNames = GetListOfDirectoriesFromCurrentDirectory();
-            _toolTip.SetToolTip(_shoppingCart, "Select item to delete");
+            _toolTip.SetToolTip(_checkBoxToRemoveItem, "To delete item from the shoping cart check and select the item.");
             _cBox1Chain.Items.AddRange(chainNames.ToArray<object>());
             _cBox2Chain.Items.AddRange(chainNames.ToArray<object>());
             _cBox3Chain.Items.AddRange(chainNames.ToArray<object>());
@@ -161,46 +163,135 @@ namespace PriceCompare
 
         private void CBox1Chain_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var sendr = sender as ComboBox;
-            AddStoreNamesToCBox((string)sendr.SelectedItem, _cBoxStores1);
+            if ((sender as ComboBox).SelectedItem != null)
+            {
+                AddStoreNamesToCBox(((string)(sender as ComboBox).SelectedItem), _cBoxStores1);
+            }
         }
 
         private void CBox2Chain_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var sendr = sender as ComboBox;
-            AddStoreNamesToCBox((string)sendr.SelectedItem, _cBoxStores2);
+            if ((sender as ComboBox).SelectedItem != null)
+            {
+                AddStoreNamesToCBox(((string)(sender as ComboBox).SelectedItem), _cBoxStores2);
+            }
         }
 
         private void CBox3Chain_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var sendr = sender as ComboBox;
-            AddStoreNamesToCBox((string)sendr.SelectedItem, _cBoxStores3);
+            if((sender as ComboBox).SelectedItem != null)
+            {
+                AddStoreNamesToCBox(((string)(sender as ComboBox).SelectedItem), _cBoxStores3);
+            }
         }
 
         private void Items_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _shoppingCart.Items.Add((sender as ComboBox).SelectedItem);
+            if(!_shoppingCart.Items.Contains((sender as ComboBox).SelectedItem) && (sender as ComboBox).SelectedItem!= null)
+            {
+                _shoppingCart.Items.Add((sender as ComboBox).SelectedItem);
+                _itemsAmount.Add(((string)(sender as ComboBox).SelectedItem), 1);
+            }
         }
 
         private void ShoppingCart_SelectedIndexChanged(object sender, EventArgs e)
         {
-            (sender as ComboBox).Items.Remove((sender as ComboBox).SelectedItem);
+            var itemSelected = (sender as ComboBox).SelectedItem;
+            if ((sender as ComboBox).SelectedItem != null)
+            {
+                if (_checkBoxToRemoveItem.Checked)
+                {
+                    (sender as ComboBox).Items.Remove(itemSelected);
+                    _itemsAmount.Remove(((string)itemSelected));
+                }
+                else
+                {
+                    _quantitySelection = new QuantitySelectionForm();
+                    _quantitySelection.ShowForm();
+                    if (_quantitySelection.IsOkButtonPressed)
+                    {
+                        _itemsAmount[((string)itemSelected)] = _quantitySelection.Amount;
+                    }
+                }
+            }
         }
 
         private void Compare_Click(object sender, EventArgs e)
         {
-            var data = new StringBuilder();
-            var items = GetItemPrices((string)_cBox1Chain.SelectedItem,
-                (string)_cBoxStores1.SelectedItem,
-                _shoppingCart.Items.Cast<string>().ToList());
-
-            foreach (var item in items)
+            if (_shoppingCart.Items.Count == 0)
             {
-                data.AppendFormat(@"{1} = {0}{2}", 
+                ShowWarning("Please select items to compare");
+            }
+            else if (_cBoxStores3.SelectedItem == null && _cBoxStores2.SelectedItem == null && _cBoxStores1.SelectedItem == null)
+            {
+                ShowWarning("Please select at list 1 store");
+            }
+
+            var data1 = new StringBuilder();
+            var items1 = GetItemPrices((string)_cBox1Chain.SelectedItem,
+                (string)_cBoxStores1.SelectedItem,
+                _shoppingCart.Items.Cast<string>().ToList())
+                .OrderBy(item => item.Value);
+
+
+            data1.AppendLine($"{(string)_cBox1Chain.SelectedItem} - {(string)_cBoxStores1.SelectedItem}");
+
+            foreach (var item in items1)
+            {
+                data1.AppendFormat(@"{1} = {0}{2}",
                     item.Key, item.Value, Environment.NewLine);
             }
 
-            MessageBox.Show(data.ToString());
+            MessageBox.Show(data1.ToString());
+        }
+
+        private void ShowWarning(string warningMsg)
+        {
+            MessageBox.Show(warningMsg, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        public void TemporeryCompare()
+        {
+            var data1 = new StringBuilder();
+            var items1 = GetItemPrices((string)_cBox1Chain.SelectedItem,
+                (string)_cBoxStores1.SelectedItem,
+                _shoppingCart.Items.Cast<string>().ToList());
+
+            data1.AppendLine($"{(string)_cBox1Chain.SelectedItem} - {(string)_cBoxStores1.SelectedItem}");
+            foreach (var item in items1)
+            {
+                data1.AppendFormat(@"{1} = {0}{2}",
+                    item.Key, item.Value, Environment.NewLine);
+            }
+
+            var data2 = new StringBuilder();
+            var items2 = GetItemPrices((string)_cBox2Chain.SelectedItem,
+                (string)_cBoxStores2.SelectedItem,
+                _shoppingCart.Items.Cast<string>().ToList());
+
+            data2.AppendLine($"{(string)_cBox2Chain.SelectedItem} - {(string)_cBoxStores2.SelectedItem}");
+            foreach (var item in items2)
+            {
+                data2.AppendFormat(@"{1} = {0}{2}",
+                    item.Key, item.Value, Environment.NewLine);
+            }
+
+            var data3 = new StringBuilder();
+            var items3 = GetItemPrices((string)_cBox3Chain.SelectedItem,
+                (string)_cBoxStores3.SelectedItem,
+                _shoppingCart.Items.Cast<string>().ToList());
+
+            data3.AppendLine($"{(string)_cBox3Chain.SelectedItem} - {(string)_cBoxStores3.SelectedItem}");
+            foreach (var item in items3)
+            {
+                data3.AppendFormat(@"{1} = {0}{2}",
+                    item.Key, item.Value, Environment.NewLine);
+            }
+
+            data1.AppendLine();
+            data1.AppendLine(data2.ToString());
+            data1.AppendLine(data3.ToString());
+            MessageBox.Show(data1.ToString());
         }
     }
 }

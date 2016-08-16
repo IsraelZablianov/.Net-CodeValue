@@ -39,6 +39,7 @@
             this._shoppingCart = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Compare = new System.Windows.Forms.Button();
+            this._checkBoxToRemoveItem = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // _cBox1Chain
@@ -125,7 +126,7 @@
             this._items.FormattingEnabled = true;
             this._items.Location = new System.Drawing.Point(12, 222);
             this._items.Name = "_items";
-            this._items.Size = new System.Drawing.Size(143, 163);
+            this._items.Size = new System.Drawing.Size(157, 163);
             this._items.Sorted = true;
             this._items.TabIndex = 6;
             this._items.SelectedIndexChanged += new System.EventHandler(this.Items_SelectedIndexChanged);
@@ -133,8 +134,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Image = global::PriceCompare.Properties.Resources.רשת_שיווק_364x245;
             this.label1.Location = new System.Drawing.Point(61, 206);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
@@ -149,9 +150,9 @@
             this._shoppingCart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this._shoppingCart.ForeColor = System.Drawing.SystemColors.InfoText;
             this._shoppingCart.FormattingEnabled = true;
-            this._shoppingCart.Location = new System.Drawing.Point(171, 222);
+            this._shoppingCart.Location = new System.Drawing.Point(187, 222);
             this._shoppingCart.Name = "_shoppingCart";
-            this._shoppingCart.Size = new System.Drawing.Size(143, 163);
+            this._shoppingCart.Size = new System.Drawing.Size(155, 163);
             this._shoppingCart.Sorted = true;
             this._shoppingCart.TabIndex = 8;
             this._shoppingCart.SelectedIndexChanged += new System.EventHandler(this.ShoppingCart_SelectedIndexChanged);
@@ -159,9 +160,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Image = global::PriceCompare.Properties.Resources.רשת_שיווק_364x245;
-            this.label2.Location = new System.Drawing.Point(212, 206);
+            this.label2.Location = new System.Drawing.Point(230, 206);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 9;
@@ -179,6 +180,16 @@
             this.Compare.UseVisualStyleBackColor = true;
             this.Compare.Click += new System.EventHandler(this.Compare_Click);
             // 
+            // _checkBoxToRemoveItem
+            // 
+            this._checkBoxToRemoveItem.AutoSize = true;
+            this._checkBoxToRemoveItem.BackColor = System.Drawing.Color.Transparent;
+            this._checkBoxToRemoveItem.Location = new System.Drawing.Point(299, 206);
+            this._checkBoxToRemoveItem.Name = "_checkBoxToRemoveItem";
+            this._checkBoxToRemoveItem.Size = new System.Drawing.Size(15, 14);
+            this._checkBoxToRemoveItem.TabIndex = 11;
+            this._checkBoxToRemoveItem.UseVisualStyleBackColor = false;
+            // 
             // PriceCompareDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,6 +197,7 @@
             this.BackgroundImage = global::PriceCompare.Properties.Resources.רשת_שיווק_364x245;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(616, 397);
+            this.Controls.Add(this._checkBoxToRemoveItem);
             this.Controls.Add(this.Compare);
             this.Controls.Add(this.label2);
             this.Controls.Add(this._shoppingCart);
@@ -197,8 +209,10 @@
             this.Controls.Add(this._cBox2Chain);
             this.Controls.Add(this._cBoxStores1);
             this.Controls.Add(this._cBox1Chain);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "PriceCompareDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Price Compare";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -218,6 +232,7 @@
         private System.Windows.Forms.ComboBox _shoppingCart;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Compare;
+        private System.Windows.Forms.CheckBox _checkBoxToRemoveItem;
     }
 }
 
