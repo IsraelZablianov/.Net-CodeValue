@@ -81,7 +81,7 @@ namespace PriceCompare
             // 
             // Report
             // 
-            this.BackgroundImage = global::PriceCompare.Properties.Resources.products;
+            this.BackgroundImage = global::FinalProjectPriceCompare.Properties.Resources.products;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(528, 348);
             this.Controls.Add(this._reportInformation);

@@ -1,6 +1,6 @@
 ﻿namespace PriceCompare
 {
-    partial class PriceCompareDialog
+    partial class PriceCompareForm
     {
         /// <summary>
         /// Required designer variable.
@@ -202,13 +202,13 @@
             this._checkBoxSelectStoresToCompare.TabIndex = 16;
             this._checkBoxSelectStoresToCompare.UseVisualStyleBackColor = false;
             // 
-            // PriceCompareDialog
+            // PriceCompareForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::PriceCompare.Properties.Resources.רשת_שיווק_364x245;
+            this.BackgroundImage = global::FinalProjectPriceCompare.Properties.Resources.רשת_שיווק_364x245;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(616, 397);
+            this.ClientSize = new System.Drawing.Size(616, 409);
             this.Controls.Add(this._checkBoxSelectStoresToCompare);
             this.Controls.Add(this.label5);
             this.Controls.Add(this._cBoxStoresToCompare);
@@ -224,7 +224,7 @@
             this.Controls.Add(this._cBoxChain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.Name = "PriceCompareDialog";
+            this.Name = "PriceCompareForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Price Compare";
             this.ResumeLayout(false);

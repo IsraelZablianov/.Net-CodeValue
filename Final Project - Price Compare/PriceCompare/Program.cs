@@ -13,7 +13,7 @@ namespace PriceCompare
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PriceCompareDialog());
+            Application.Run(new PriceCompareForm());
         }
     }
 }

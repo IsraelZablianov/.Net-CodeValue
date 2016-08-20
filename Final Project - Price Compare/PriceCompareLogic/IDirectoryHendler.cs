@@ -4,11 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace PriceCompare
+namespace PriceCompareLogic
 {
-    public interface IFolderHendler
+    interface IDirectoryHendler
     {
         List<string> GetListOfDirectoriesFromCurrentDirectory();
         FileInfo[] GetFileInfo(string dirName, string partialFileName);
