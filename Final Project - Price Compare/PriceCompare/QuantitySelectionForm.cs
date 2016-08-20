@@ -32,7 +32,7 @@ namespace PriceCompare
         {
             _isOkButtonPressed = false;
             numericUpDown1.Value = 1;
-            Show();
+            ShowDialog();
         }
 
         public bool IsOkButtonPressed

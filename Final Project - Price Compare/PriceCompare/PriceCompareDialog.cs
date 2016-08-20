@@ -16,13 +16,13 @@ namespace PriceCompare
     public partial class PriceCompareDialog : Form, IFolderHendler, IXmlParse
     {
         private ToolTip _toolTip = new ToolTip();
-        private Dictionary<string, double> _itemsAmount = new Dictionary<string, double>();
+        private Dictionary<string, double> _itemQuantities = new Dictionary<string, double>();
 
         public PriceCompareDialog()
         {
             InitializeComponent();
             var chainNames = GetListOfDirectoriesFromCurrentDirectory();
-            _toolTip.SetToolTip(_checkBoxToRemoveItem, "Check and select the item to chnage the quantity of the product.");
+            _toolTip.SetToolTip(_checkBoxToRemoveItem, "Check and select the item to change the quantity of the product.");
             _toolTip.SetToolTip(_checkBoxSelectStoresToCompare, "Check and select the branch to add to the  comperison list.");
             _cBoxChain.Items.AddRange(chainNames.ToArray<object>());
         }
@@ -171,7 +171,7 @@ namespace PriceCompare
             if(!_shoppingCart.Items.Contains((sender as ComboBox).SelectedItem) && (sender as ComboBox).SelectedItem!= null)
             {
                 _shoppingCart.Items.Add((sender as ComboBox).SelectedItem);
-                _itemsAmount.Add(((string)(sender as ComboBox).SelectedItem), 1);
+                _itemQuantities.Add(((string)(sender as ComboBox).SelectedItem), 1);
             }
         }
 
@@ -186,13 +186,13 @@ namespace PriceCompare
                     quantitySelection.ShowForm();
                     if (quantitySelection.IsOkButtonPressed)
                     {
-                        _itemsAmount[((string)itemSelected)] = quantitySelection.Amount;
+                        _itemQuantities[((string)itemSelected)] = quantitySelection.Amount;
                     }
                 }
                 else
                 {
                     (sender as ComboBox).Items.Remove(itemSelected);
-                    _itemsAmount.Remove(((string)itemSelected));
+                    _itemQuantities.Remove(((string)itemSelected));
                 }
             }
         }
@@ -234,21 +234,45 @@ namespace PriceCompare
             }
             else
             {
-                var data1 = new StringBuilder();
-                var items1 = GetItemPrices((string)_cBoxChain.SelectedItem,
-                    (string)_cBoxStores.SelectedItem,
+                var report = new Dictionary<string, string>();
+                foreach (string chainAndBranchName in _cBoxStoresToCompare.Items)
+                {
+                    string[] chainAndBranch = chainAndBranchName.Split('-');
+                    var itemAndPrices = GetItemPrices(chainAndBranch[0],
+                    chainAndBranch[1],
                     _shoppingCart.Items.Cast<string>().ToList())
                     .OrderBy(item => item.Value);
-                data1.AppendLine($"{(string)_cBoxChain.SelectedItem}-{(string)_cBoxStores.SelectedItem}");
-
-                foreach (var item in items1)
-                {
-                    data1.AppendFormat(@"{1} = {0}{2}",
-                        item.Key, item.Value, Environment.NewLine);
+                    report.Add($"{chainAndBranch[0]}-{chainAndBranch[1]}", 
+                        FullReport(itemAndPrices.ToDictionary(pair => pair.Key, pair => pair.Value),
+                        _itemQuantities));
                 }
 
-                MessageBox.Show(data1.ToString());
+                var reportMsgBox = new StringBuilder();
+                foreach (var item in report)
+                {
+                    reportMsgBox.AppendLine($"{item.Key}{Environment.NewLine}{item.Value}");
+                }
+
+                MessageBox.Show(reportMsgBox.ToString());
             }
+        }
+
+        private string FullReport(Dictionary<string, double> itemsAndPrices, 
+            Dictionary<string, double> itemsAndQuantities)
+        {
+            var report = new StringBuilder();
+            double sum = 0;
+
+            foreach (var item in itemsAndPrices)
+            {
+                report.AppendFormat(@"{0} = {1} x{2}{3}",
+                    item.Value * itemsAndQuantities[item.Key], item.Key,
+                    itemsAndQuantities[item.Key], Environment.NewLine);
+                sum += item.Value * itemsAndQuantities[item.Key];
+            }
+
+            report.Insert(0, $"Total = {sum}{Environment.NewLine}");
+            return report.ToString();
         }
 
         private void ShowWarning(string warningMsg)

@@ -43,27 +43,27 @@
             this._checkBoxSelectStoresToCompare = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // _cBox1Chain
+            // _cBoxChain
             // 
             this._cBoxChain.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this._cBoxChain.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this._cBoxChain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this._cBoxChain.FormattingEnabled = true;
             this._cBoxChain.Location = new System.Drawing.Point(12, 46);
-            this._cBoxChain.Name = "_cBox1Chain";
+            this._cBoxChain.Name = "_cBoxChain";
             this._cBoxChain.Size = new System.Drawing.Size(143, 137);
             this._cBoxChain.Sorted = true;
             this._cBoxChain.TabIndex = 0;
             this._cBoxChain.SelectedIndexChanged += new System.EventHandler(this.CBoxChains_SelectedIndexChanged);
             // 
-            // _cBoxStores1
+            // _cBoxStores
             // 
             this._cBoxStores.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this._cBoxStores.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this._cBoxStores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this._cBoxStores.FormattingEnabled = true;
             this._cBoxStores.Location = new System.Drawing.Point(161, 46);
-            this._cBoxStores.Name = "_cBoxStores1";
+            this._cBoxStores.Name = "_cBoxStores";
             this._cBoxStores.Size = new System.Drawing.Size(143, 137);
             this._cBoxStores.Sorted = true;
             this._cBoxStores.TabIndex = 1;
@@ -102,7 +102,7 @@
             this._shoppingCart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this._shoppingCart.ForeColor = System.Drawing.SystemColors.InfoText;
             this._shoppingCart.FormattingEnabled = true;
-            this._shoppingCart.Location = new System.Drawing.Point(187, 222);
+            this._shoppingCart.Location = new System.Drawing.Point(187, 232);
             this._shoppingCart.Name = "_shoppingCart";
             this._shoppingCart.Size = new System.Drawing.Size(155, 163);
             this._shoppingCart.Sorted = true;
@@ -173,7 +173,7 @@
             this._cBoxStoresToCompare.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this._cBoxStoresToCompare.ForeColor = System.Drawing.SystemColors.InfoText;
             this._cBoxStoresToCompare.FormattingEnabled = true;
-            this._cBoxStoresToCompare.Location = new System.Drawing.Point(12, 222);
+            this._cBoxStoresToCompare.Location = new System.Drawing.Point(12, 232);
             this._cBoxStoresToCompare.Name = "_cBoxStoresToCompare";
             this._cBoxStoresToCompare.Size = new System.Drawing.Size(157, 163);
             this._cBoxStoresToCompare.Sorted = true;
