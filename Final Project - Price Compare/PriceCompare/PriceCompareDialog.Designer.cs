@@ -28,94 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this._cBox1Chain = new System.Windows.Forms.ComboBox();
-            this._cBoxStores1 = new System.Windows.Forms.ComboBox();
-            this._cBox2Chain = new System.Windows.Forms.ComboBox();
-            this._cBoxStores3 = new System.Windows.Forms.ComboBox();
-            this._cBoxStores2 = new System.Windows.Forms.ComboBox();
-            this._cBox3Chain = new System.Windows.Forms.ComboBox();
+            this._cBoxChain = new System.Windows.Forms.ComboBox();
+            this._cBoxStores = new System.Windows.Forms.ComboBox();
             this._items = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this._shoppingCart = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Compare = new System.Windows.Forms.Button();
             this._checkBoxToRemoveItem = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this._cBoxStoresToCompare = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this._checkBoxSelectStoresToCompare = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // _cBox1Chain
             // 
-            this._cBox1Chain.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this._cBox1Chain.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this._cBox1Chain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this._cBox1Chain.FormattingEnabled = true;
-            this._cBox1Chain.Location = new System.Drawing.Point(12, 12);
-            this._cBox1Chain.Name = "_cBox1Chain";
-            this._cBox1Chain.Size = new System.Drawing.Size(143, 85);
-            this._cBox1Chain.Sorted = true;
-            this._cBox1Chain.TabIndex = 0;
-            this._cBox1Chain.SelectedIndexChanged += new System.EventHandler(this.CBox1Chain_SelectedIndexChanged);
+            this._cBoxChain.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this._cBoxChain.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this._cBoxChain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this._cBoxChain.FormattingEnabled = true;
+            this._cBoxChain.Location = new System.Drawing.Point(12, 46);
+            this._cBoxChain.Name = "_cBox1Chain";
+            this._cBoxChain.Size = new System.Drawing.Size(143, 137);
+            this._cBoxChain.Sorted = true;
+            this._cBoxChain.TabIndex = 0;
+            this._cBoxChain.SelectedIndexChanged += new System.EventHandler(this.CBoxChains_SelectedIndexChanged);
             // 
             // _cBoxStores1
             // 
-            this._cBoxStores1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this._cBoxStores1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this._cBoxStores1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this._cBoxStores1.FormattingEnabled = true;
-            this._cBoxStores1.Location = new System.Drawing.Point(12, 103);
-            this._cBoxStores1.Name = "_cBoxStores1";
-            this._cBoxStores1.Size = new System.Drawing.Size(143, 85);
-            this._cBoxStores1.Sorted = true;
-            this._cBoxStores1.TabIndex = 1;
-            // 
-            // _cBox2Chain
-            // 
-            this._cBox2Chain.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this._cBox2Chain.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this._cBox2Chain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this._cBox2Chain.FormattingEnabled = true;
-            this._cBox2Chain.Location = new System.Drawing.Point(171, 12);
-            this._cBox2Chain.Name = "_cBox2Chain";
-            this._cBox2Chain.Size = new System.Drawing.Size(143, 85);
-            this._cBox2Chain.Sorted = true;
-            this._cBox2Chain.TabIndex = 2;
-            this._cBox2Chain.SelectedIndexChanged += new System.EventHandler(this.CBox2Chain_SelectedIndexChanged);
-            // 
-            // _cBoxStores3
-            // 
-            this._cBoxStores3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this._cBoxStores3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this._cBoxStores3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this._cBoxStores3.FormattingEnabled = true;
-            this._cBoxStores3.Location = new System.Drawing.Point(337, 103);
-            this._cBoxStores3.Name = "_cBoxStores3";
-            this._cBoxStores3.Size = new System.Drawing.Size(143, 85);
-            this._cBoxStores3.Sorted = true;
-            this._cBoxStores3.TabIndex = 3;
-            // 
-            // _cBoxStores2
-            // 
-            this._cBoxStores2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this._cBoxStores2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this._cBoxStores2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this._cBoxStores2.FormattingEnabled = true;
-            this._cBoxStores2.Location = new System.Drawing.Point(171, 103);
-            this._cBoxStores2.Name = "_cBoxStores2";
-            this._cBoxStores2.Size = new System.Drawing.Size(143, 85);
-            this._cBoxStores2.Sorted = true;
-            this._cBoxStores2.TabIndex = 4;
-            // 
-            // _cBox3Chain
-            // 
-            this._cBox3Chain.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this._cBox3Chain.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this._cBox3Chain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this._cBox3Chain.FormattingEnabled = true;
-            this._cBox3Chain.Location = new System.Drawing.Point(337, 12);
-            this._cBox3Chain.Name = "_cBox3Chain";
-            this._cBox3Chain.Size = new System.Drawing.Size(143, 85);
-            this._cBox3Chain.Sorted = true;
-            this._cBox3Chain.TabIndex = 5;
-            this._cBox3Chain.SelectedIndexChanged += new System.EventHandler(this.CBox3Chain_SelectedIndexChanged);
+            this._cBoxStores.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this._cBoxStores.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this._cBoxStores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this._cBoxStores.FormattingEnabled = true;
+            this._cBoxStores.Location = new System.Drawing.Point(161, 46);
+            this._cBoxStores.Name = "_cBoxStores1";
+            this._cBoxStores.Size = new System.Drawing.Size(143, 137);
+            this._cBoxStores.Sorted = true;
+            this._cBoxStores.TabIndex = 1;
+            this._cBoxStores.SelectedIndexChanged += new System.EventHandler(this.CBoxStores_SelectedIndexChanged);
             // 
             // _items
             // 
@@ -124,9 +76,9 @@
             this._items.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this._items.ForeColor = System.Drawing.SystemColors.InfoText;
             this._items.FormattingEnabled = true;
-            this._items.Location = new System.Drawing.Point(12, 222);
+            this._items.Location = new System.Drawing.Point(310, 46);
             this._items.Name = "_items";
-            this._items.Size = new System.Drawing.Size(157, 163);
+            this._items.Size = new System.Drawing.Size(157, 137);
             this._items.Sorted = true;
             this._items.TabIndex = 6;
             this._items.SelectedIndexChanged += new System.EventHandler(this.Items_SelectedIndexChanged);
@@ -136,7 +88,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(61, 206);
+            this.label1.Location = new System.Drawing.Point(366, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 7;
@@ -190,6 +142,66 @@
             this._checkBoxToRemoveItem.TabIndex = 11;
             this._checkBoxToRemoveItem.UseVisualStyleBackColor = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label3.Location = new System.Drawing.Point(52, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "רשתות";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label4.Location = new System.Drawing.Point(211, 24);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "סניפים";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // _cBoxStoresToCompare
+            // 
+            this._cBoxStoresToCompare.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this._cBoxStoresToCompare.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this._cBoxStoresToCompare.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this._cBoxStoresToCompare.ForeColor = System.Drawing.SystemColors.InfoText;
+            this._cBoxStoresToCompare.FormattingEnabled = true;
+            this._cBoxStoresToCompare.Location = new System.Drawing.Point(12, 222);
+            this._cBoxStoresToCompare.Name = "_cBoxStoresToCompare";
+            this._cBoxStoresToCompare.Size = new System.Drawing.Size(157, 163);
+            this._cBoxStoresToCompare.Sorted = true;
+            this._cBoxStoresToCompare.TabIndex = 14;
+            this._cBoxStoresToCompare.SelectedIndexChanged += new System.EventHandler(this.CBoxStoresToCompare_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label5.Location = new System.Drawing.Point(21, 206);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(134, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "סניפים נבחרים להשוואה";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // _checkBoxSelectStoresToCompare
+            // 
+            this._checkBoxSelectStoresToCompare.AutoSize = true;
+            this._checkBoxSelectStoresToCompare.BackColor = System.Drawing.Color.Transparent;
+            this._checkBoxSelectStoresToCompare.Location = new System.Drawing.Point(260, 23);
+            this._checkBoxSelectStoresToCompare.Name = "_checkBoxSelectStoresToCompare";
+            this._checkBoxSelectStoresToCompare.Size = new System.Drawing.Size(15, 14);
+            this._checkBoxSelectStoresToCompare.TabIndex = 16;
+            this._checkBoxSelectStoresToCompare.UseVisualStyleBackColor = false;
+            // 
             // PriceCompareDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -197,18 +209,19 @@
             this.BackgroundImage = global::PriceCompare.Properties.Resources.רשת_שיווק_364x245;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(616, 397);
+            this.Controls.Add(this._checkBoxSelectStoresToCompare);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this._cBoxStoresToCompare);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this._checkBoxToRemoveItem);
             this.Controls.Add(this.Compare);
             this.Controls.Add(this.label2);
             this.Controls.Add(this._shoppingCart);
             this.Controls.Add(this.label1);
             this.Controls.Add(this._items);
-            this.Controls.Add(this._cBox3Chain);
-            this.Controls.Add(this._cBoxStores2);
-            this.Controls.Add(this._cBoxStores3);
-            this.Controls.Add(this._cBox2Chain);
-            this.Controls.Add(this._cBoxStores1);
-            this.Controls.Add(this._cBox1Chain);
+            this.Controls.Add(this._cBoxStores);
+            this.Controls.Add(this._cBoxChain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "PriceCompareDialog";
@@ -221,18 +234,19 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox _cBox1Chain;
-        private System.Windows.Forms.ComboBox _cBoxStores1;
-        private System.Windows.Forms.ComboBox _cBox2Chain;
-        private System.Windows.Forms.ComboBox _cBoxStores3;
-        private System.Windows.Forms.ComboBox _cBoxStores2;
-        private System.Windows.Forms.ComboBox _cBox3Chain;
+        private System.Windows.Forms.ComboBox _cBoxChain;
+        private System.Windows.Forms.ComboBox _cBoxStores;
         private System.Windows.Forms.ComboBox _items;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox _shoppingCart;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Compare;
         private System.Windows.Forms.CheckBox _checkBoxToRemoveItem;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox _cBoxStoresToCompare;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox _checkBoxSelectStoresToCompare;
     }
 }
 

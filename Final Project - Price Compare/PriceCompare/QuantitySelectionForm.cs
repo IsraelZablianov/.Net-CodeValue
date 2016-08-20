@@ -54,7 +54,7 @@ namespace PriceCompare
             // 
             // OKButton
             // 
-            this.OKButton.Location = new System.Drawing.Point(95, 87);
+            this.OKButton.Location = new System.Drawing.Point(77, 78);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(50, 23);
             this.OKButton.TabIndex = 0;
@@ -90,7 +90,7 @@ namespace PriceCompare
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(39, 87);
+            this.button1.Location = new System.Drawing.Point(19, 78);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(50, 23);
             this.button1.TabIndex = 3;
@@ -100,7 +100,7 @@ namespace PriceCompare
             // 
             // QuantitySelectionForm
             // 
-            this.ClientSize = new System.Drawing.Size(147, 113);
+            this.ClientSize = new System.Drawing.Size(147, 107);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numericUpDown1);

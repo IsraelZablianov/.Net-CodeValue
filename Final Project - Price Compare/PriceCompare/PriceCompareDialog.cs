@@ -17,18 +17,14 @@ namespace PriceCompare
     {
         private ToolTip _toolTip = new ToolTip();
         private Dictionary<string, double> _itemsAmount = new Dictionary<string, double>();
-        private QuantitySelectionForm _quantitySelection = new QuantitySelectionForm();
 
         public PriceCompareDialog()
         {
             InitializeComponent();
             var chainNames = GetListOfDirectoriesFromCurrentDirectory();
-            _toolTip.SetToolTip(_checkBoxToRemoveItem, "To delete item from the shoping cart check and select the item.");
-            _cBox1Chain.Items.AddRange(chainNames.ToArray<object>());
-            _cBox2Chain.Items.AddRange(chainNames.ToArray<object>());
-            _cBox3Chain.Items.AddRange(chainNames.ToArray<object>());
-            //for pilot adding all items of every store of "חצי חינם"
-            AddProductItemsToCBox("חצי חינם");
+            _toolTip.SetToolTip(_checkBoxToRemoveItem, "Check and select the item to chnage the quantity of the product.");
+            _toolTip.SetToolTip(_checkBoxSelectStoresToCompare, "Check and select the branch to add to the  comperison list.");
+            _cBoxChain.Items.AddRange(chainNames.ToArray<object>());
         }
 
         public List<string> GetListOfDirectoriesFromCurrentDirectory()
@@ -138,22 +134,23 @@ namespace PriceCompare
             }
         }
 
-        private async void AddProductItemsToCBox(string dirName)
+        private async void AddProductItemsToCBox(string dirName, string storeName)
         {
             var items = new Dictionary<string, object>();
-            FileInfo[] filesOfFullPrice =  GetFileInfo(dirName, "PriceFull");
-            List<string> listOfItems = null;
+            var fileName = GetStoreFullPath(dirName, storeName);
+            if(_items.Items != null)
+            {
+                _items.Items.Clear();
+            }
+
             await Task.Run(() =>
             {
-                foreach (var file in filesOfFullPrice)
+                var listOfItems = GetListOfItemsFromXml(fileName, "Item", "ItemName");
+                foreach (var item in listOfItems)
                 {
-                    listOfItems = GetListOfItemsFromXml(file.FullName, "Item", "ItemName");
-                    foreach (var item in listOfItems)
+                    if (!items.ContainsKey(item))
                     {
-                        if (!items.ContainsKey(item))
-                        {
-                            items.Add(item, null);
-                        }
+                        items.Add(item, null);
                     }
                 }
             });
@@ -161,27 +158,11 @@ namespace PriceCompare
             _items.Items.AddRange(items.Keys.ToArray<object>());
         }
 
-        private void CBox1Chain_SelectedIndexChanged(object sender, EventArgs e)
+        private void CBoxChains_SelectedIndexChanged(object sender, EventArgs e)
         {
             if ((sender as ComboBox).SelectedItem != null)
             {
-                AddStoreNamesToCBox(((string)(sender as ComboBox).SelectedItem), _cBoxStores1);
-            }
-        }
-
-        private void CBox2Chain_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if ((sender as ComboBox).SelectedItem != null)
-            {
-                AddStoreNamesToCBox(((string)(sender as ComboBox).SelectedItem), _cBoxStores2);
-            }
-        }
-
-        private void CBox3Chain_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if((sender as ComboBox).SelectedItem != null)
-            {
-                AddStoreNamesToCBox(((string)(sender as ComboBox).SelectedItem), _cBoxStores3);
+                AddStoreNamesToCBox(((string)(sender as ComboBox).SelectedItem), _cBoxStores);
             }
         }
 
@@ -201,18 +182,43 @@ namespace PriceCompare
             {
                 if (_checkBoxToRemoveItem.Checked)
                 {
-                    (sender as ComboBox).Items.Remove(itemSelected);
-                    _itemsAmount.Remove(((string)itemSelected));
+                    var quantitySelection = new QuantitySelectionForm();
+                    quantitySelection.ShowForm();
+                    if (quantitySelection.IsOkButtonPressed)
+                    {
+                        _itemsAmount[((string)itemSelected)] = quantitySelection.Amount;
+                    }
                 }
                 else
                 {
-                    _quantitySelection = new QuantitySelectionForm();
-                    _quantitySelection.ShowForm();
-                    if (_quantitySelection.IsOkButtonPressed)
-                    {
-                        _itemsAmount[((string)itemSelected)] = _quantitySelection.Amount;
-                    }
+                    (sender as ComboBox).Items.Remove(itemSelected);
+                    _itemsAmount.Remove(((string)itemSelected));
                 }
+            }
+        }
+
+        private void CBoxStores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if((string)(_cBoxChain.SelectedItem) != null && (string)(sender as ComboBox).SelectedItem != null)
+            {
+                AddProductItemsToCBox((string)(_cBoxChain.SelectedItem), (string)(sender as ComboBox).SelectedItem);
+                var selectedBranch = $"{(string)(_cBoxChain.SelectedItem)}-{(string)(sender as ComboBox).SelectedItem}";
+                if (_checkBoxSelectStoresToCompare.Checked && !_cBoxStoresToCompare.Items.Contains(selectedBranch))
+                {
+                    _cBoxStoresToCompare.Items.Add(selectedBranch);
+                }
+            }
+            else
+            {
+                ShowWarning("Please select 1 chain and 1 branch");
+            }
+        }
+
+        private void CBoxStoresToCompare_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if((sender as ComboBox).SelectedItem != null)
+            {
+                _cBoxStoresToCompare.Items.Remove((string)(sender as ComboBox).SelectedItem);
             }
         }
 
@@ -222,76 +228,32 @@ namespace PriceCompare
             {
                 ShowWarning("Please select items to compare");
             }
-            else if (_cBoxStores3.SelectedItem == null && _cBoxStores2.SelectedItem == null && _cBoxStores1.SelectedItem == null)
+            else if (_cBoxStores.SelectedItem == null || _cBoxChain.SelectedItem == null)
             {
-                ShowWarning("Please select at list 1 store");
+                ShowWarning("Please select at list 1 chain and 1 branch");
             }
-
-            var data1 = new StringBuilder();
-            var items1 = GetItemPrices((string)_cBox1Chain.SelectedItem,
-                (string)_cBoxStores1.SelectedItem,
-                _shoppingCart.Items.Cast<string>().ToList())
-                .OrderBy(item => item.Value);
-
-
-            data1.AppendLine($"{(string)_cBox1Chain.SelectedItem} - {(string)_cBoxStores1.SelectedItem}");
-
-            foreach (var item in items1)
+            else
             {
-                data1.AppendFormat(@"{1} = {0}{2}",
-                    item.Key, item.Value, Environment.NewLine);
-            }
+                var data1 = new StringBuilder();
+                var items1 = GetItemPrices((string)_cBoxChain.SelectedItem,
+                    (string)_cBoxStores.SelectedItem,
+                    _shoppingCart.Items.Cast<string>().ToList())
+                    .OrderBy(item => item.Value);
+                data1.AppendLine($"{(string)_cBoxChain.SelectedItem}-{(string)_cBoxStores.SelectedItem}");
 
-            MessageBox.Show(data1.ToString());
+                foreach (var item in items1)
+                {
+                    data1.AppendFormat(@"{1} = {0}{2}",
+                        item.Key, item.Value, Environment.NewLine);
+                }
+
+                MessageBox.Show(data1.ToString());
+            }
         }
 
         private void ShowWarning(string warningMsg)
         {
             MessageBox.Show(warningMsg, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
-        public void TemporeryCompare()
-        {
-            var data1 = new StringBuilder();
-            var items1 = GetItemPrices((string)_cBox1Chain.SelectedItem,
-                (string)_cBoxStores1.SelectedItem,
-                _shoppingCart.Items.Cast<string>().ToList());
-
-            data1.AppendLine($"{(string)_cBox1Chain.SelectedItem} - {(string)_cBoxStores1.SelectedItem}");
-            foreach (var item in items1)
-            {
-                data1.AppendFormat(@"{1} = {0}{2}",
-                    item.Key, item.Value, Environment.NewLine);
-            }
-
-            var data2 = new StringBuilder();
-            var items2 = GetItemPrices((string)_cBox2Chain.SelectedItem,
-                (string)_cBoxStores2.SelectedItem,
-                _shoppingCart.Items.Cast<string>().ToList());
-
-            data2.AppendLine($"{(string)_cBox2Chain.SelectedItem} - {(string)_cBoxStores2.SelectedItem}");
-            foreach (var item in items2)
-            {
-                data2.AppendFormat(@"{1} = {0}{2}",
-                    item.Key, item.Value, Environment.NewLine);
-            }
-
-            var data3 = new StringBuilder();
-            var items3 = GetItemPrices((string)_cBox3Chain.SelectedItem,
-                (string)_cBoxStores3.SelectedItem,
-                _shoppingCart.Items.Cast<string>().ToList());
-
-            data3.AppendLine($"{(string)_cBox3Chain.SelectedItem} - {(string)_cBoxStores3.SelectedItem}");
-            foreach (var item in items3)
-            {
-                data3.AppendFormat(@"{1} = {0}{2}",
-                    item.Key, item.Value, Environment.NewLine);
-            }
-
-            data1.AppendLine();
-            data1.AppendLine(data2.ToString());
-            data1.AppendLine(data3.ToString());
-            MessageBox.Show(data1.ToString());
         }
     }
 }
