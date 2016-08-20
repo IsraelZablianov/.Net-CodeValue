@@ -138,10 +138,7 @@ namespace PriceCompare
         {
             var items = new Dictionary<string, object>();
             var fileName = GetStoreFullPath(dirName, storeName);
-            if(_items.Items != null)
-            {
-                _items.Items.Clear();
-            }
+            _items.Items.Clear();
 
             await Task.Run(() =>
             {
@@ -242,18 +239,15 @@ namespace PriceCompare
                     chainAndBranch[1],
                     _shoppingCart.Items.Cast<string>().ToList())
                     .OrderBy(item => item.Value);
+
                     report.Add($"{chainAndBranch[0]}-{chainAndBranch[1]}", 
                         FullReport(itemAndPrices.ToDictionary(pair => pair.Key, pair => pair.Value),
                         _itemQuantities));
                 }
 
-                var reportMsgBox = new StringBuilder();
-                foreach (var item in report)
-                {
-                    reportMsgBox.AppendLine($"{item.Key}{Environment.NewLine}{item.Value}");
-                }
-
-                MessageBox.Show(reportMsgBox.ToString());
+                var reportForm = new Report(report);
+                reportForm.Show();
+                //reportForm.ShowDialog();
             }
         }
 
@@ -271,7 +265,7 @@ namespace PriceCompare
                 sum += item.Value * itemsAndQuantities[item.Key];
             }
 
-            report.Insert(0, $"Total = {sum}{Environment.NewLine}");
+            report.Insert(0, $"Total = {sum}{Environment.NewLine}{Environment.NewLine}");
             return report.ToString();
         }
 
