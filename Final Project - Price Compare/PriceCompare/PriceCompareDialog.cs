@@ -23,30 +23,38 @@ namespace PriceCompare
         public PriceCompareForm()
         {
             InitializeComponent();
-            var chainNames = _storeFileManager.GetListOfDirectoriesFromCurrentDirectory();
+            var chainNames = _storeFileManager.GetDirectories();
             _toolTip.SetToolTip(_checkBoxToRemoveItem, "Check and select the item to change the quantity of the product.");
             _toolTip.SetToolTip(_checkBoxSelectStoresToCompare, "Check and select the branch to add to the  comperison list.");
             _cBoxChain.Items.AddRange(chainNames.ToArray<object>());
         }
 
-        private void AddStoreNamesToCBox(string dirName, ComboBox cBoxStoreNames)
+        private void AddStoreNamesToCBox(FileIdentifiers fileIdentifiers, ComboBox cBoxStoreNames)
         {
-            FileInfo[] filesInDir = _storeFileManager.GetFileInfo(dirName, "Stores");
-            var storesFilePath = Path.Combine(dirName, filesInDir[0].Name);
-            var storeNames = _storeFileManager.GetListOfElementsFromXml(storesFilePath, "Store", "StoreName");
+            FileInfo[] filesInDir = _storeFileManager.GetFileInfo(fileIdentifiers);
+            var xmlElementId = new XmlElementId() {
+                DescendantFrom = "Store",
+                ElementName = "StoreName",
+                XmlFullPath = Path.Combine(fileIdentifiers.DirName, filesInDir[0].Name)};
+             
+            var storeNames = _storeFileManager.GetListOfElementsFromXml(xmlElementId);
             cBoxStoreNames.Items.Clear();
             cBoxStoreNames.Items.AddRange(storeNames.ToArray<object>());
         }
 
-        private async void AddProductItemsToCBox(string dirName, string storeName)
+        private async void AddProductItemsToCBox(FileIdentifiers fileIdentifiers)
         {
             var items = new Dictionary<string, object>();
-            var fileName = _storeFileManager.GetStoreFullPath(dirName, storeName);
+            var xmlElementId = new XmlElementId() {
+                XmlFullPath = _storeFileManager.GetStoreFullPath(fileIdentifiers),
+                DescendantFrom = "Item",
+                ElementName = "ItemName"};
+
             _items.Items.Clear();
 
             await Task.Run(() =>
             {
-                var listOfItems = _storeFileManager.GetListOfElementsFromXml(fileName, "Item", "ItemName");
+                var listOfItems = _storeFileManager.GetListOfElementsFromXml(xmlElementId);
                 foreach (var item in listOfItems)
                 {
                     if (!items.ContainsKey(item))
@@ -63,7 +71,10 @@ namespace PriceCompare
         {
             if ((sender as ComboBox).SelectedItem != null)
             {
-                AddStoreNamesToCBox(((string)(sender as ComboBox).SelectedItem), _cBoxStores);
+                var fileIdentifiers = new FileIdentifiers() {
+                DirName = (string)(sender as ComboBox).SelectedItem,
+                PartialFileName = "Stores"};
+                AddStoreNamesToCBox(fileIdentifiers, _cBoxStores);
             }
         }
 
@@ -102,8 +113,12 @@ namespace PriceCompare
         {
             if((string)(_cBoxChain.SelectedItem) != null && (string)(sender as ComboBox).SelectedItem != null)
             {
-                AddProductItemsToCBox((string)(_cBoxChain.SelectedItem), (string)(sender as ComboBox).SelectedItem);
-                var selectedBranch = $"{(string)(_cBoxChain.SelectedItem)}-{(string)(sender as ComboBox).SelectedItem}";
+                var fileIdentifiers = new FileIdentifiers(){
+                    DirName = (string)(_cBoxChain.SelectedItem),
+                    PartialFileName = (string)(sender as ComboBox).SelectedItem};
+                AddProductItemsToCBox(fileIdentifiers);
+                var selectedBranch = $"{fileIdentifiers.DirName}-{fileIdentifiers.PartialFileName}";
+
                 if (_checkBoxSelectStoresToCompare.Checked && !_cBoxStoresToCompare.Items.Contains(selectedBranch))
                 {
                     _cBoxStoresToCompare.Items.Add(selectedBranch);
@@ -139,14 +154,20 @@ namespace PriceCompare
                 foreach (string chainAndBranchName in _cBoxStoresToCompare.Items)
                 {
                     string[] chainAndBranch = chainAndBranchName.Split('-');
-                    var itemAndPrices = _storeFileManager.GetItemsPrice(chainAndBranch[0],
-                    chainAndBranch[1],
+                    var fileIdentifiers = new FileIdentifiers() {
+                        DirName = chainAndBranch[0],
+                        PartialFileName = chainAndBranch[1]};
+                    var itemAndPrices = _storeFileManager.GetItemsPrice(
+                    fileIdentifiers,
                     _shoppingCart.Items.Cast<string>().ToList())
                     .OrderBy(item => item.Value);
 
+                    var databaseOfItem = new DatabaseOfItem(){
+                        ItemsAndPrices = itemAndPrices.ToDictionary(pair => pair.Key, pair => pair.Value),
+                        ItemsAndQuantities = _itemQuantities};
+
                     report.Add($"{chainAndBranch[0]}-{chainAndBranch[1]}",
-                        _storeFileManager.FullReport(itemAndPrices.ToDictionary(pair => pair.Key, pair => pair.Value),
-                        _itemQuantities));
+                        _storeFileManager.FullReport(databaseOfItem));
                 }
 
                 var reportForm = new Report(report);

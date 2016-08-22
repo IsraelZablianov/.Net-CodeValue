@@ -9,7 +9,7 @@ namespace PriceCompareLogic
 {
     interface IDirectoryHendler
     {
-        List<string> GetListOfDirectoriesFromCurrentDirectory();
-        FileInfo[] GetFileInfo(string dirName, string partialFileName);
+        List<string> GetDirectories();
+        FileInfo[] GetFileInfo(FileIdentifiers fileIdentifiers);
     }
 }

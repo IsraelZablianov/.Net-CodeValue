@@ -8,6 +8,6 @@ namespace PriceCompareLogic
 {
     interface IXmlParse
     {
-        List<string> GetListOfElementsFromXml(string xmlFullPath, string descendants, string elementName);
+        List<string> GetListOfElementsFromXml(XmlElementId xmlElementId);
     }
 }

@@ -8,6 +8,6 @@ namespace PriceCompareLogic
 {
     interface IReportable
     {
-        string FullReport(Dictionary<string, double> itemsAndPrices, Dictionary<string, double> itemsAndQuantities);
+        string FullReport(DatabaseOfItem databaseOfItem);
     }
 }

@@ -116,6 +116,9 @@
     </Content>
     <None Include="Resources\רשת-שיווק-364x245.jpg" />
     <None Include="Resources\products.jpg" />
+    <Content Include="LogFiles\ParseXml.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="חצי חינם\Price7290700100008-002-201608130800.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

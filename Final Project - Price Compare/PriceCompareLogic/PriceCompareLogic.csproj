@@ -40,11 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseOfItem.cs" />
+    <Compile Include="FileIdentifiers.cs" />
     <Compile Include="IDirectoryHendler.cs" />
     <Compile Include="IReportable.cs" />
     <Compile Include="IXmlParse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StoreFileManager.cs" />
+    <Compile Include="XmlElementId.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
