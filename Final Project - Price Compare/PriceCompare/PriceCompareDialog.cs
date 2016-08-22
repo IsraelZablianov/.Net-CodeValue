@@ -144,7 +144,7 @@ namespace PriceCompare
             {
                 ShowWarning("Please select items to compare");
             }
-            else if (_cBoxStores.SelectedItem == null || _cBoxChain.SelectedItem == null)
+            else if (_cBoxStores.SelectedItem == null || _cBoxChain.SelectedItem == null || _cBoxStoresToCompare.Items.Count == 0)
             {
                 ShowWarning("Please select at list 1 chain and 1 branch");
             }

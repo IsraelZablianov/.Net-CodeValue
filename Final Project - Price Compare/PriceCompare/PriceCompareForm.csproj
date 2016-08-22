@@ -114,9 +114,318 @@
     <Content Include="LogFiles\LoadingNamesFromFilesLog.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="רמי לוי\PriceFull7290873900009-001-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="רמי לוי\PriceFull7290873900009-002-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="רמי לוי\PriceFull7290873900009-003-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="רמי לוי\PriceFull7290873900009-004-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="רמי לוי\Stores7290873900009-201506070100.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\רשת-שיווק-364x245.jpg" />
     <None Include="Resources\products.jpg" />
     <Content Include="LogFiles\ParseXml.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="אושר עד\PriceFull7290103152017-001-201608220800.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="אושר עד\PriceFull7290103152017-003-201608220800.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="אושר עד\PriceFull7290103152017-005-201608220800.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="אושר עד\PriceFull7290103152017-006-201608220800.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="אושר עד\PriceFull7290103152017-009-201608220800.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="אושר עד\PriceFull7290103152017-010-201608220800.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="אושר עד\PriceFull7290103152017-011-201608220800.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="אושר עד\PriceFull7290103152017-013-201608220800.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="אושר עד\PriceFull7290103152017-014-201608220800.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="אושר עד\PriceFull7290103152017-016-201608220800.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="אושר עד\PriceFull7290103152017-020-201608220800.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="אושר עד\PriceFull7290103152017-022-201608220800.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="אושר עד\PriceFull7290103152017-024-201608220800.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="אושר עד\PriceFull7290103152017-026-201608220800.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="אושר עד\PriceFull7290103152017-028-201608220800.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="אושר עד\Stores7290103152017-201605082005.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-501-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-502-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-503-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-504-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-505-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-506-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-507-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-508-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-509-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-510-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-511-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-512-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-513-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-514-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-515-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-516-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-517-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-518-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-519-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-521-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-522-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-524-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-525-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-529-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-531-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-532-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-533-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-534-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-535-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-536-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-537-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-538-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-540-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-542-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-544-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-545-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-548-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-549-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-551-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-553-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-554-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-556-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-557-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-558-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-647-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-648-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-649-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-655-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-656-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-657-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-662-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-701-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-702-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-704-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-705-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-706-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-707-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-708-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-709-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-710-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-711-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-712-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-713-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-714-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-715-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-716-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-717-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-719-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-720-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-721-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-722-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-723-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-724-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-725-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-726-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-727-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-728-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-729-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-730-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-731-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\PriceFull7290492000005-824-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="דור אלון\Stores7290492000005-201608220700.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="חצי חינם\Price7290700100008-002-201608130800.xml">
@@ -293,6 +602,63 @@
     <Content Include="טיב טעם\PriceFull7290873255550-081-201608130010.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-001-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-004-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-005-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-007-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-008-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-009-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-012-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-013-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-015-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-016-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-017-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-018-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-028-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\Stores7290803800003-201608220100.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="סופר דוש\PriceFull7290873900009-001-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="סופר דוש\PriceFull7290873900009-002-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="סופר דוש\PriceFull7290873900009-003-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="סופר דוש\PriceFull7290873900009-004-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="סופר דוש\Stores7290873900009-201506070100.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="קואופ\PricesFull7290633800006-002-201608130003.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -441,6 +807,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
