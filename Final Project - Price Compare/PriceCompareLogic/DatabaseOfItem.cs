@@ -8,6 +8,13 @@ namespace PriceCompareLogic
 {
     public class DatabaseOfItem
     {
+        public DatabaseOfItem()
+        {
+            ItemsAndPrices = new Dictionary<string, double>();
+            ItemsAndQuantities = new Dictionary<string, double>();
+            Items = new List<string>();
+        }
+
         public Dictionary<string, double> ItemsAndPrices
         {
             get;
@@ -15,6 +22,12 @@ namespace PriceCompareLogic
         }
 
         public Dictionary<string, double> ItemsAndQuantities
+        {
+            get;
+            set;
+        }
+
+        public List<string> Items
         {
             get;
             set;

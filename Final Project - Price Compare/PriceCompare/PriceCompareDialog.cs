@@ -17,8 +17,9 @@ namespace PriceCompare
     public partial class PriceCompareForm : Form
     {
         private ToolTip _toolTip = new ToolTip();
-        private Dictionary<string, double> _itemQuantities = new Dictionary<string, double>();
+        private DatabaseOfItem _databaseOfShoppingCart = new DatabaseOfItem();
         private StoreFileManager _storeFileManager = new StoreFileManager();
+        private char _spliter = ',';
 
         public PriceCompareForm()
         {
@@ -83,7 +84,7 @@ namespace PriceCompare
             if(!_shoppingCart.Items.Contains((sender as ComboBox).SelectedItem) && (sender as ComboBox).SelectedItem!= null)
             {
                 _shoppingCart.Items.Add((sender as ComboBox).SelectedItem);
-                _itemQuantities.Add(((string)(sender as ComboBox).SelectedItem), 1);
+                _databaseOfShoppingCart.ItemsAndQuantities.Add(((string)(sender as ComboBox).SelectedItem), 1);
             }
         }
 
@@ -98,13 +99,13 @@ namespace PriceCompare
                     quantitySelection.ShowForm();
                     if (quantitySelection.IsOkButtonPressed)
                     {
-                        _itemQuantities[((string)itemSelected)] = quantitySelection.Amount;
+                        _databaseOfShoppingCart.ItemsAndQuantities[((string)itemSelected)] = quantitySelection.Amount;
                     }
                 }
                 else
                 {
                     (sender as ComboBox).Items.Remove(itemSelected);
-                    _itemQuantities.Remove(((string)itemSelected));
+                    _databaseOfShoppingCart.ItemsAndQuantities.Remove(((string)itemSelected));
                 }
             }
         }
@@ -117,7 +118,7 @@ namespace PriceCompare
                     DirName = (string)(_cBoxChain.SelectedItem),
                     PartialFileName = (string)(sender as ComboBox).SelectedItem};
                 AddProductItemsToCBox(fileIdentifiers);
-                var selectedBranch = $"{fileIdentifiers.DirName}-{fileIdentifiers.PartialFileName}";
+                var selectedBranch = $"{fileIdentifiers.DirName}{_spliter}{fileIdentifiers.PartialFileName}";
 
                 if (_checkBoxSelectStoresToCompare.Checked && !_cBoxStoresToCompare.Items.Contains(selectedBranch))
                 {
@@ -150,27 +151,18 @@ namespace PriceCompare
             }
             else
             {
-                var report = new Dictionary<string, string>();
+                List<FileIdentifiers> stores = new List<FileIdentifiers>();
                 foreach (string chainAndBranchName in _cBoxStoresToCompare.Items)
                 {
-                    string[] chainAndBranch = chainAndBranchName.Split('-');
-                    var fileIdentifiers = new FileIdentifiers() {
-                        DirName = chainAndBranch[0],
-                        PartialFileName = chainAndBranch[1]};
-                    var itemAndPrices = _storeFileManager.GetItemsPrice(
-                    fileIdentifiers,
-                    _shoppingCart.Items.Cast<string>().ToList())
-                    .OrderBy(item => item.Value);
-
-                    var databaseOfItem = new DatabaseOfItem(){
-                        ItemsAndPrices = itemAndPrices.ToDictionary(pair => pair.Key, pair => pair.Value),
-                        ItemsAndQuantities = _itemQuantities};
-
-                    report.Add($"{chainAndBranch[0]}-{chainAndBranch[1]}",
-                        _storeFileManager.FullReport(databaseOfItem));
+                    string[] chainAndBranch = chainAndBranchName.Split(_spliter);
+                    var store = new FileIdentifiers(){
+                        DirName = chainAndBranch[0], PartialFileName = chainAndBranch[1]};
+                    stores.Add(store);
                 }
 
-                var reportForm = new Report(report);
+                _databaseOfShoppingCart.Items =  _shoppingCart.Items.Cast<string>().ToList();
+                var fullReportOfStores = _storeFileManager.FullReportOfStores(stores, _databaseOfShoppingCart);
+                var reportForm = new Report(fullReportOfStores);
                 reportForm.Show();
             }
         }

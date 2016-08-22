@@ -10,7 +10,7 @@ namespace PriceCompareLogic
 {
     public class StoreFileManager : IReportable, IDirectoryHendler, IXmlParse
     {
-        public string FullReport(DatabaseOfItem databaseOfItem)
+        public string FullReportOfStore(DatabaseOfItem databaseOfItem)
         {
             var report = new StringBuilder();
             double sum = 0;
@@ -26,6 +26,21 @@ namespace PriceCompareLogic
 
             report.Insert(0, $"Total = {sum}{Environment.NewLine}{Environment.NewLine}");
             return report.ToString();
+        }
+
+        public Dictionary<string, string> FullReportOfStores(List<FileIdentifiers> stores, DatabaseOfItem databaseOfShoppingCart)
+        {
+            var report = new Dictionary<string, string>();
+            foreach (var store in stores)
+            {
+                var itemsAndPrices = GetItemsPrice(store, databaseOfShoppingCart.Items)
+                .OrderBy(item => item.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
+
+                databaseOfShoppingCart.ItemsAndPrices = itemsAndPrices;
+                report.Add($"{store.DirName}-{store.PartialFileName}", FullReportOfStore(databaseOfShoppingCart));
+            }
+
+            return report;
         }
 
         public FileInfo[] GetFileInfo(FileIdentifiers fileIdentifiers)

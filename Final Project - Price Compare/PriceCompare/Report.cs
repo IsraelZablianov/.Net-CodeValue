@@ -13,18 +13,18 @@ namespace PriceCompare
         private Label label1;
         private ListBox _listOfStores;
         private TextBox _reportInformation;
-        private Dictionary<string, string> _reportInformationOfStore;
+        private Dictionary<string, string> _fullReportOfStores;
 
-        public Report(Dictionary<string, string> ReportInformationOfStores)
+        public Report(Dictionary<string, string> FullReportOfStores)
         {
-            _reportInformationOfStore = ReportInformationOfStores;
+            _fullReportOfStores = FullReportOfStores;
             InitializeComponent();
             LoadStoresName();
         }
 
         private void LoadStoresName()
         {
-            _listOfStores.Items.AddRange(_reportInformationOfStore.Keys.ToArray());
+            _listOfStores.Items.AddRange(_fullReportOfStores.Keys.ToArray());
         }
 
         private void InitializeComponent()
@@ -104,7 +104,7 @@ namespace PriceCompare
             if((sender as ListBox).SelectedItem != null)
             {
                 _reportInformation.Text = string.Empty;
-                _reportInformation.Text = _reportInformationOfStore[(string)(sender as ListBox).SelectedItem];
+                _reportInformation.Text = _fullReportOfStores[(string)(sender as ListBox).SelectedItem];
             }
         }
     }
