@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PriceCompareLogic
 {
+    [Serializable]
     public class DatabaseOfItem
     {
         public DatabaseOfItem()

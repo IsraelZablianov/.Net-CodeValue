@@ -108,6 +108,8 @@ namespace PriceCompare
                     _databaseOfShoppingCart.ItemsAndQuantities.Remove(((string)itemSelected));
                 }
             }
+
+            _databaseOfShoppingCart.Items = _shoppingCart.Items.Cast<string>().ToList();
         }
 
         private void CBoxStores_SelectedIndexChanged(object sender, EventArgs e)
@@ -160,7 +162,6 @@ namespace PriceCompare
                     stores.Add(store);
                 }
 
-                _databaseOfShoppingCart.Items =  _shoppingCart.Items.Cast<string>().ToList();
                 var fullReportOfStores = _storeFileManager.FullReportOfStores(stores, _databaseOfShoppingCart);
                 var reportForm = new Report(fullReportOfStores);
                 reportForm.Show();
@@ -170,6 +171,50 @@ namespace PriceCompare
         private void ShowWarning(string warningMsg)
         {
             MessageBox.Show(warningMsg, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void Save_Click(object sender, EventArgs e)
+        {
+            if (_shoppingCart.Items.Count != 0)
+            {
+                using (var dialog = new SaveFileDialog())
+                {
+                    dialog.DefaultExt = "*.txt";
+                    dialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+                    DialogResult result = dialog.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        string filename = dialog.FileName;
+                        _storeFileManager.SaveFile(filename, _databaseOfShoppingCart);
+                    }
+                }
+            }
+        }
+
+        private void Load_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog.FilterIndex = 2;
+            openFileDialog.RestoreDirectory = true;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if ((openFileDialog.OpenFile()) != null)
+                {
+                    _shoppingCart.Items.Clear();
+                    var databaseOfItemDeserialize = _storeFileManager.LoadFile(openFileDialog.FileName);
+                    if(databaseOfItemDeserialize != null)
+                    {
+                        _databaseOfShoppingCart = databaseOfItemDeserialize;
+                        _shoppingCart.Items.AddRange(_databaseOfShoppingCart.Items.ToArray());
+                    }
+                    else
+                    {
+                        ShowWarning("Wrong File selected please select different one");
+                    }
+                }
+            }
         }
     }
 }

@@ -125,5 +125,30 @@ namespace PriceCompareLogic
 
             return itemsNameAndPrice;
         }
+
+        public void SaveFile(string filePath, DatabaseOfItem databaseOfItem)
+        {
+            using (Stream stream = File.Open(filePath, FileMode.OpenOrCreate))
+            {
+                var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                binaryFormatter.Serialize(stream, databaseOfItem);
+            }
+        }
+
+        public DatabaseOfItem LoadFile(string filePath)
+        {
+            using (Stream stream = File.OpenRead(filePath))
+            {
+                var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                DatabaseOfItem databaseOfItem = null;
+                try
+                {
+                    databaseOfItem = (DatabaseOfItem)binaryFormatter.Deserialize(stream);
+                }
+                catch (Exception) { }
+
+                return databaseOfItem;
+            }
+        }
     }
 }
