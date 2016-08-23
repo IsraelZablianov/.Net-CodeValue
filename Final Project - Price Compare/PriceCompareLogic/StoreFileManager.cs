@@ -17,8 +17,11 @@ namespace PriceCompareLogic
 
             foreach (var item in databaseOfItem.ItemsAndPrices)
             {
+                var amount = (item.Value * databaseOfItem.ItemsAndQuantities[item.Key])
+                    != 0 ? (item.Value * databaseOfItem.ItemsAndQuantities[item.Key]).ToString()
+                    : "Not Exists";
                 report.AppendFormat(@"{0} = {1} x{2}{3}",
-                    item.Value * databaseOfItem.ItemsAndQuantities[item.Key], item.Key,
+                    amount, item.Key,
                     databaseOfItem.ItemsAndQuantities[item.Key], 
                     Environment.NewLine);
                 sum += item.Value * databaseOfItem.ItemsAndQuantities[item.Key];

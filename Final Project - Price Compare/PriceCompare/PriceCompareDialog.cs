@@ -145,11 +145,6 @@ namespace PriceCompare
             }
         }
 
-        private void ShowWarning(string warningMsg)
-        {
-            MessageBox.Show(warningMsg, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
         private void Save_Click(object sender, EventArgs e)
         {
             if (_shoppingCart.Items.Count != 0)
@@ -179,10 +174,10 @@ namespace PriceCompare
             {
                 if ((openFileDialog.OpenFile()) != null)
                 {
-                    _shoppingCart.Items.Clear();
                     var databaseOfItemDeserialize = _storeFileManager.LoadFile(openFileDialog.FileName);
                     if(databaseOfItemDeserialize != null)
                     {
+                        _shoppingCart.Items.Clear();
                         _databaseOfShoppingCart = databaseOfItemDeserialize;
                         _shoppingCart.Items.AddRange(_databaseOfShoppingCart.Items.ToArray());
                     }
@@ -192,6 +187,11 @@ namespace PriceCompare
                     }
                 }
             }
+        }
+
+        private void ShowWarning(string warningMsg)
+        {
+            MessageBox.Show(warningMsg, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }
