@@ -66,6 +66,20 @@ namespace PriceCompareLogic
             return chainNames;
         }
 
+        public List<string> GetStoresNames(FileIdentifiers fileIdentifiers)
+        {
+            FileInfo[] filesInDir = GetFileInfo(fileIdentifiers);
+            var xmlElementId = new XmlElementId()
+            {
+                DescendantFrom = "Store",
+                ElementName = "StoreName",
+                XmlFullPath = Path.Combine(fileIdentifiers.DirName, filesInDir[0].Name)
+            };
+
+            var storeNames = GetListOfElementsFromXml(xmlElementId);
+            return storeNames;
+        }
+
         public List<string> GetListOfElementsFromXml(XmlElementId xmlElementId)
         {
             var XElementDoc = XElement.Load(xmlElementId.XmlFullPath);
@@ -78,6 +92,31 @@ namespace PriceCompareLogic
                               .ToList();
 
             return listOfElements;
+        }
+
+        public async Task<List<string>> GetItemsOfStore(FileIdentifiers fileIdentifiers)
+        {
+            var items = new List<string>();
+            var xmlElementId = new XmlElementId()
+            {
+                XmlFullPath = GetStoreFullPath(fileIdentifiers),
+                DescendantFrom = "Item",
+                ElementName = "ItemName"
+            };
+
+            await Task.Run(() =>
+            {
+                var listOfItems = GetListOfElementsFromXml(xmlElementId);
+                foreach (var item in listOfItems)
+                {
+                    if (!items.Contains(item))
+                    {
+                        items.Add(item);
+                    }
+                }
+            });
+
+            return items;
         }
 
         public string GetStoreFullPath(FileIdentifiers fileIdentifiers)

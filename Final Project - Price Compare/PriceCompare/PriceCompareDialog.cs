@@ -32,40 +32,17 @@ namespace PriceCompare
 
         private void AddStoreNamesToCBox(FileIdentifiers fileIdentifiers, ComboBox cBoxStoreNames)
         {
-            FileInfo[] filesInDir = _storeFileManager.GetFileInfo(fileIdentifiers);
-            var xmlElementId = new XmlElementId() {
-                DescendantFrom = "Store",
-                ElementName = "StoreName",
-                XmlFullPath = Path.Combine(fileIdentifiers.DirName, filesInDir[0].Name)};
-             
-            var storeNames = _storeFileManager.GetListOfElementsFromXml(xmlElementId);
+            var storeNames = _storeFileManager.GetStoresNames(fileIdentifiers);
             cBoxStoreNames.Items.Clear();
             cBoxStoreNames.Items.AddRange(storeNames.ToArray<object>());
         }
 
         private async void AddProductItemsToCBox(FileIdentifiers fileIdentifiers)
         {
-            var items = new Dictionary<string, object>();
-            var xmlElementId = new XmlElementId() {
-                XmlFullPath = _storeFileManager.GetStoreFullPath(fileIdentifiers),
-                DescendantFrom = "Item",
-                ElementName = "ItemName"};
+            var items = await _storeFileManager.GetItemsOfStore(fileIdentifiers);
 
             _items.Items.Clear();
-
-            await Task.Run(() =>
-            {
-                var listOfItems = _storeFileManager.GetListOfElementsFromXml(xmlElementId);
-                foreach (var item in listOfItems)
-                {
-                    if (!items.ContainsKey(item))
-                    {
-                        items.Add(item, null);
-                    }
-                }
-            });
-
-            _items.Items.AddRange(items.Keys.ToArray<object>());
+            _items.Items.AddRange(items.ToArray<object>());
         }
 
         private void CBoxChains_SelectedIndexChanged(object sender, EventArgs e)
@@ -85,6 +62,7 @@ namespace PriceCompare
             {
                 _shoppingCart.Items.Add((sender as ComboBox).SelectedItem);
                 _databaseOfShoppingCart.ItemsAndQuantities.Add(((string)(sender as ComboBox).SelectedItem), 1);
+                _databaseOfShoppingCart.Items.Add((string)(sender as ComboBox).SelectedItem);
             }
         }
 
@@ -106,10 +84,9 @@ namespace PriceCompare
                 {
                     (sender as ComboBox).Items.Remove(itemSelected);
                     _databaseOfShoppingCart.ItemsAndQuantities.Remove(((string)itemSelected));
+                    _databaseOfShoppingCart.Items.Remove(((string)itemSelected));
                 }
             }
-
-            _databaseOfShoppingCart.Items = _shoppingCart.Items.Cast<string>().ToList();
         }
 
         private void CBoxStores_SelectedIndexChanged(object sender, EventArgs e)
