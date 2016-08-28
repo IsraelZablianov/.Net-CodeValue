@@ -8,6 +8,11 @@ namespace PriceCompareLogic
 {
     public class XmlElementId
     {
+        public XmlElementId()
+        {
+            ElementCondition = ElementConditionExpected = string.Empty;
+        }
+
         public string XmlFullPath
         {
             get;
@@ -21,6 +26,18 @@ namespace PriceCompareLogic
         }
 
         public string ElementName
+        {
+            get;
+            set;
+        }
+
+        public string ElementCondition
+        {
+            get;
+            set;
+        }
+
+        public string ElementConditionExpected
         {
             get;
             set;

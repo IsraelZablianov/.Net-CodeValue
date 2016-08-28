@@ -69,7 +69,7 @@ namespace PriceCompareLogic
             return chainNames;
         }
 
-        public List<string> GetStoresNames(FileIdentifiers fileIdentifiers)
+        public List<string> GetStoresNames(FileIdentifiers fileIdentifiers, string optionalAreaName)
         {
             FileInfo[] filesInDir = GetFileInfo(fileIdentifiers);
             var xmlElementId = new XmlElementId()
@@ -79,20 +79,44 @@ namespace PriceCompareLogic
                 XmlFullPath = Path.Combine(fileIdentifiers.DirName, filesInDir[0].Name)
             };
 
+            if (!string.IsNullOrEmpty(optionalAreaName))
+            {
+                xmlElementId.ElementCondition = "City";
+                xmlElementId.ElementConditionExpected = optionalAreaName;
+            }
+
+            var storeNames = GetListOfElementsFromXml(xmlElementId);
+            return storeNames;
+        }
+
+        public List<string> GetStoresNames(FileIdentifiers fileIdentifiers, XmlElementId xmlElementId)
+        {
+            FileInfo[] filesInDir = GetFileInfo(fileIdentifiers);
+            xmlElementId.XmlFullPath = Path.Combine(fileIdentifiers.DirName, filesInDir[0].Name);
             var storeNames = GetListOfElementsFromXml(xmlElementId);
             return storeNames;
         }
 
         public List<string> GetListOfElementsFromXml(XmlElementId xmlElementId)
         {
-            var XElementDoc = XElement.Load(xmlElementId.XmlFullPath);
-            var listOfElements = (from element
-                              in XElementDoc.Descendants()
-                              .Where(el => string.Compare(el.Name.LocalName, xmlElementId.DescendantFrom,
-                               StringComparison.OrdinalIgnoreCase) == 0)
+            var listOfElements = new List<string>();
+
+            try
+            {
+                var XElementDoc = XElement.Load(xmlElementId.XmlFullPath);
+                listOfElements = (from element
+                  in XElementDoc.Descendants()
+                  .Where(el => string.Compare(el.Name.LocalName, xmlElementId.DescendantFrom,
+                   StringComparison.OrdinalIgnoreCase) == 0)
+                                  where (string.IsNullOrEmpty(xmlElementId.ElementCondition)
+                                  || ((string)element.Element(xmlElementId.ElementCondition)).Trim() == xmlElementId.ElementConditionExpected)
                                   select (string)element
-                                 .Element(xmlElementId.ElementName))
-                              .ToList();
+                                 .Element(xmlElementId.ElementName)).ToList();
+            }
+            catch (Exception)
+            {
+                File.WriteAllText(@"LogFiles\StoreItems.txt", $"{xmlElementId.ElementName} not found");
+            }
 
             return listOfElements;
         }
@@ -100,12 +124,10 @@ namespace PriceCompareLogic
         public async Task<List<string>> GetItemsOfStore(FileIdentifiers fileIdentifiers)
         {
             var items = new List<string>();
-            var xmlElementId = new XmlElementId()
-            {
-                XmlFullPath = GetStoreFullPath(fileIdentifiers),
-                DescendantFrom = "Item",
-                ElementName = "ItemName"
-            };
+            var xmlElementId = new XmlElementId();
+            xmlElementId.XmlFullPath = GetStoreFullPath(fileIdentifiers);
+            xmlElementId.DescendantFrom = "Item";
+            xmlElementId.ElementName = "ItemName";
 
             await Task.Run(() =>
             {
@@ -124,23 +146,25 @@ namespace PriceCompareLogic
 
         public string GetStoreFullPath(FileIdentifiers fileIdentifiers)
         {
-            var storeFileIdentifier = new FileIdentifiers() {
-                DirName = fileIdentifiers.DirName,
-                PartialFileName = "Stores"};
+            var storeFileIdentifier = new FileIdentifiers();
+            storeFileIdentifier.DirName = fileIdentifiers.DirName;
+            storeFileIdentifier.PartialFileName = "Stores";
             FileInfo[] fileInfo = GetFileInfo(storeFileIdentifier);
             var XElementDoc = XElement.Load(fileInfo[0].FullName);
             string fileFullPath = string.Empty;
             var storeId = (from element in (XElementDoc.Descendants()
-                              .Where(el => string.Compare(el.Name.LocalName, "Store",
-                               StringComparison.OrdinalIgnoreCase) == 0))
+                           .Where(el => string.Compare(el.Name.LocalName, "Store",
+                           StringComparison.OrdinalIgnoreCase) == 0))
                            where (string)element.Element("StoreName") == fileIdentifiers.PartialFileName
                            select (string)element.Element("StoreId"))
-                              .ToList().First();
+                           .ToList().First();
             var storeIdInFormOf3Digits = string.Format("{0:000}", int.Parse(storeId));
-
             storeFileIdentifier.PartialFileName = $"Price*Full*-{storeIdInFormOf3Digits}-";
             FileInfo[] files = GetFileInfo(storeFileIdentifier);
-            fileFullPath = files[0].FullName;
+            if (files.Any())
+            {
+                fileFullPath = files[0].FullName;
+            }
 
             return fileFullPath;
         }

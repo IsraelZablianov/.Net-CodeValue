@@ -114,6 +114,51 @@
     <Content Include="LogFiles\LoadingNamesFromFilesLog.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="LogFiles\StoreItems.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-001-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-004-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-005-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-007-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-008-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-009-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-012-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-013-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-015-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-016-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-017-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-018-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\PriceFull7290803800003-028-201608220010.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="יוחננוף\Stores7290803800003-201608220100.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="רמי לוי\PriceFull7290873900009-001-201608220010.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -600,48 +645,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="טיב טעם\PriceFull7290873255550-081-201608130010.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="יוחננוף\PriceFull7290803800003-001-201608220010.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="יוחננוף\PriceFull7290803800003-004-201608220010.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="יוחננוף\PriceFull7290803800003-005-201608220010.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="יוחננוף\PriceFull7290803800003-007-201608220010.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="יוחננוף\PriceFull7290803800003-008-201608220010.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="יוחננוף\PriceFull7290803800003-009-201608220010.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="יוחננוף\PriceFull7290803800003-012-201608220010.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="יוחננוף\PriceFull7290803800003-013-201608220010.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="יוחננוף\PriceFull7290803800003-015-201608220010.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="יוחננוף\PriceFull7290803800003-016-201608220010.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="יוחננוף\PriceFull7290803800003-017-201608220010.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="יוחננוף\PriceFull7290803800003-018-201608220010.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="יוחננוף\PriceFull7290803800003-028-201608220010.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="יוחננוף\Stores7290803800003-201608220100.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="סופר דוש\PriceFull7290873900009-001-201608220010.xml">

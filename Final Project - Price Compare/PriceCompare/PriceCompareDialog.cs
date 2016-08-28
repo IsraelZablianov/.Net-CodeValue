@@ -30,17 +30,16 @@ namespace PriceCompare
             _cBoxChain.Items.AddRange(chainNames.ToArray<object>());
         }
 
-        private void AddStoreNamesToCBox(FileIdentifiers fileIdentifiers, ComboBox cBoxStoreNames)
+        private void AddStoreNamesToCBox(FileIdentifiers fileIdentifiers, string optionalAeraFilter)
         {
-            var storeNames = _storeFileManager.GetStoresNames(fileIdentifiers);
-            cBoxStoreNames.Items.Clear();
-            cBoxStoreNames.Items.AddRange(storeNames.ToArray<object>());
+            var storeNames = _storeFileManager.GetStoresNames(fileIdentifiers, optionalAeraFilter);
+            _cBoxStores.Items.Clear();
+            _cBoxStores.Items.AddRange(storeNames.ToArray<object>());
         }
 
         private async void AddProductItemsToCBox(FileIdentifiers fileIdentifiers)
         {
             var items = await _storeFileManager.GetItemsOfStore(fileIdentifiers);
-
             _items.Items.Clear();
             _items.Items.AddRange(items.ToArray<object>());
         }
@@ -52,7 +51,7 @@ namespace PriceCompare
                 var fileIdentifiers = new FileIdentifiers() {
                 DirName = (string)(sender as ComboBox).SelectedItem,
                 PartialFileName = "Stores"};
-                AddStoreNamesToCBox(fileIdentifiers, _cBoxStores);
+                AddStoreNamesToCBox(fileIdentifiers, null);
             }
         }
 
@@ -186,6 +185,21 @@ namespace PriceCompare
                         ShowWarning("Wrong File selected please select different one");
                     }
                 }
+            }
+        }
+
+        private void Filter_Click(object sender, EventArgs e)
+        {
+            if(!string.IsNullOrEmpty(_filterTextBox.Text) && _cBoxChain.SelectedItem != null)
+            {
+                var fileIdentifiers = new FileIdentifiers();
+                fileIdentifiers.DirName = (string)_cBoxChain.SelectedItem;
+                fileIdentifiers.PartialFileName = "Stores";
+                AddStoreNamesToCBox(fileIdentifiers, _filterTextBox.Text);
+            }
+            else
+            {
+                ShowWarning("Please enter City name");
             }
         }
 
