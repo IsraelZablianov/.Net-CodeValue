@@ -1,0 +1,1 @@
+selectItemModule.component("selectItem", SelectItem);

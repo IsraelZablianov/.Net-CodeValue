@@ -1,0 +1,6 @@
+﻿<div>
+    <select class="place-input-in-center {{$ctrl.addClass}}" ng-model="$ctrl.selectedItem"
+            ng-click="$ctrl.change()"> <!--should have been ng-change-->
+        <option ng-repeat="item in $ctrl.items" value="{{item}}">{{item}}</option>
+    </select>
+</div>

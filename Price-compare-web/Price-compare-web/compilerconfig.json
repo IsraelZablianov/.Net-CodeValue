@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "index-main-app/StyleSheet.css",
+    "inputFile": "index-main-app/StyleSheet.less"
+  },
+  {
+    "outputFile": "pages/about/about.css",
+    "inputFile": "pages/about/about.less"
+  }
+]

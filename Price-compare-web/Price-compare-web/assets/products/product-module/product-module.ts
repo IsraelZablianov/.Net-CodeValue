@@ -1,0 +1,1 @@
+﻿const productModule = angular.module("productModule", ["mainAppModule"])

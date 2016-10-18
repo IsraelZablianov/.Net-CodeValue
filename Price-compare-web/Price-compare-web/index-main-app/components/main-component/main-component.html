@@ -1,0 +1,117 @@
+﻿<div class="price-compare">
+    <nav class="navbar">
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <img src="assets/images/sprite.png" class="img-responsive img" />
+        </div>
+
+        <div class="col-md-10">
+            <div class="container">
+                <a class="none-decoration" target="_blank" href="pages/about/about.html"><h1 class="navbar-brand navbar-title">Price Comparison By Israel-z.</h1></a>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="col-md-4 col-sm-12" ng-cloak>
+            <div class="container">
+                <div class="row background-none">
+                    <div class="col-md-2 col-sm-12">
+                        <div class="select-item">
+                            <div><i>Chains</i></div>
+                            <select-item selected-item="$ctrl.selectedChain" items="$ctrl.chainNames" change="$ctrl.addStores()">
+                            </select-item>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row background-none">
+                    <div class="col-md-3 col-sm-2">
+                        <div class="select-item">
+                            <div class="row background-none">
+                                <div class="col-md-6 padding-none">
+                                    <i>Stores</i>
+                                    <input type="checkbox" ng-model="$ctrl.checkBoxSelectBranch" title="Check and select the branch to add to the comperison list." />
+                                    <div class="hidden-xs">
+                                        <div class="padding-none">
+                                            <div class="filter">
+                                                <button title="Filtr stores by city name." class="btn btn-secondary height-27" type="button" ng-click="$ctrl.addStores()">Filtr</button>
+                                                <input ng-model="$ctrl.filterAreaName" type="text" placeholder="city.." />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <select-item selected-item="$ctrl.selectedStore" items="$ctrl.storeNames" change="$ctrl.addProducts()">
+                        </select-item>
+                    </div>
+                </div>
+
+                <div class="row background-none">
+                    <div class="col-md-2 col-sm-12">
+                        <div class="select-item">
+                            <i>Products</i>
+                            <select-item selected-item="$ctrl.selectedItem" items="$ctrl.productNames" change="$ctrl.addProductToShopingCart()">
+                            </select-item>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row background-none">
+                    <div class="col-md-6">
+                        <div class="select-item">
+                            <div><i>Stores to compare</i></div>
+                            <div class="flex">
+                                <button class="btn btn-primary" type="button" title="compare selected stores." ng-click="$ctrl.compareStores()">Compare</button>
+                                <select-item add-class="'set-top'" selected-item="$ctrl.selectedStoreToCompare" items="$ctrl.selectedStoresToCompare" change="$ctrl.removeSelectedStore()">
+                                </select-item>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-12 text-left">
+            <div class="row background-none">
+                <div class="head-line"><h2>Shoping cart</h2></div>
+            </div>
+            <div class="row background-none" ng-cloak>
+                <ul ng-show="$ctrl.shopingCartItems.length > 0">
+                    <li class="row list-inline columnCaptions">
+                        <span>QTY</span>
+                        <span>ITEM</span>
+                        <span></span>
+                    </li>
+                    <li class="row" ng-repeat="item in $ctrl.shopingCartItems">
+                        <span class="quantity"><input class="numeric-input" type="number" min="1" ng-model="item.quantity" /></span>
+                        <span class="itemName">{{item.name}}</span>
+                        <span class="popbtn" ng-click="$ctrl.removeItemFromShopingCart(item.name)" title="Remove item.">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-12 container">
+            <div class="row background-none">
+                <div class="select-item selected-store-report" ng-cloak ng-show="$ctrl.report.length > 0">
+                    <div>
+                        <i>Reported-store</i>
+                    </div>
+                    <select class="place-input-in-center" ng-model="$ctrl.selectedStoreToReport"
+                            ng-change="$ctrl.selectedStoreToReportChanged()">
+                        <option ng-repeat="item in $ctrl.report" value="{{item.storeName}}">{{item.storeName}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row background-none" ng-cloak>
+                <div class="select-item selected-store-report" ng-show="$ctrl.selectedStoreReport" ng-cloak>
+                    <i>Report</i>
+                    <div class="place-input-in-center little-shadow"><pre>{{$ctrl.selectedStoreReport}}</pre></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
