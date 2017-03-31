@@ -8,7 +8,7 @@ namespace PriceCompare
 {
     static class Program
     {
-        [STAThread]
+        [STAThread] 
         static void Main()
         {
             Application.EnableVisualStyles();
